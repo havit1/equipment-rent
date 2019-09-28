@@ -1,7 +1,8 @@
 import React from "react";
-import Navbar from "./Navbar/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import { Route, Switch, Redirect } from "react-router-dom";
-import HomePage from "./HomePage/HomePage";
+import HomePage from "./Components/HomePage/HomePage";
+import ProductsList from "./Components/ProductsList/ProductsList";
 import "./App.css";
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
       <Navbar></Navbar>
       <div>
         <Switch>
+          <Route path="/products/:name" component={ProductsList} />
           <Route path="/" exact component={HomePage}></Route>
-          <Redirect to="/not-found"></Redirect>
         </Switch>
       </div>
     </div>
