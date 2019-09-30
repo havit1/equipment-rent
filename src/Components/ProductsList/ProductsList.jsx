@@ -11,6 +11,14 @@ class ProductsList extends Component {
     this.setState({ allProducts });
   }
 
+  async componentDidUpdate() {
+    if (this.props.match.params.name !== this.state.allProducts[0].category) {
+      // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
+      const allProducts = await this.getProducts(this.props.match.params.name);
+      this.setState({ allProducts });
+    }
+  }
+
   getProducts(productCategory, updateState) {
     return new Promise((resolve, reject) => {
       const products = productsList.filter(c => c.category === productCategory);
@@ -19,10 +27,19 @@ class ProductsList extends Component {
   }
 
   render() {
+    const { allProducts } = this.state;
+    const { searchedString } = this.props;
+
+    const searchedProduct = searchedString
+      ? searchedString => {
+          allProducts.filter(g => g.category === searchedString);
+        }
+      : allProducts;
+
     return (
       <div>
         <ol>
-          {this.state.allProducts.map(product => (
+          {searchedProduct.map(product => (
             <li>{product.name}</li>
           ))}
         </ol>
