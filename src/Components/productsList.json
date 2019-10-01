@@ -1,20 +1,103 @@
 [
   {
-    "name": "hero Product",
+    "name": "Camera 1",
+    "id": "1",
     "category": "cameras",
     "price": "99",
     "hero": "OMG This just came out today!",
     "image": "http://placehold.it/940x300/999/CCC"
   },
   {
-    "name": "Product 1",
+    "name": "Camera 2",
+    "id": "2",
+    "category": "cameras",
+    "price": "99",
+    "hero": "OMG This just came out today!",
+    "image": "http://placehold.it/940x300/999/CCC"
+  },
+  {
+    "name": "Camera 3",
+    "id": "3",
+    "category": "cameras",
+    "price": "99",
+    "hero": "OMG This just came out today!",
+    "image": "http://placehold.it/940x300/999/CCC"
+  },
+  {
+    "name": "Camera 4",
+    "id": "4",
+    "category": "cameras",
+    "price": "99",
+    "hero": "OMG This just came out today!",
+    "image": "http://placehold.it/940x300/999/CCC"
+  },
+  {
+    "name": "Camera 5",
+    "id": "5",
+    "category": "cameras",
+    "price": "99",
+    "hero": "OMG This just came out today!",
+    "image": "http://placehold.it/940x300/999/CCC"
+  },
+  {
+    "name": "Camera 6",
+    "id": "6",
+    "category": "cameras",
+    "price": "99",
+    "hero": "OMG This just came out today!",
+    "image": "http://placehold.it/940x300/999/CCC"
+  },
+  {
+    "name": "Camera 7",
+    "id": "7",
+    "category": "cameras",
+    "price": "99",
+    "hero": "OMG This just came out today!",
+    "image": "http://placehold.it/940x300/999/CCC"
+  },
+  {
+    "name": "Microphone 1",
+    "id": "8",
     "category": "microphones",
     "price": "99",
     "info": "This is the latest and greatest product from Derp corp.",
     "image": "http://placehold.it/300x300/999/CCC"
   },
   {
-    "name": "Product 2",
+    "name": "Microphone 2",
+    "id": "9",
+    "category": "microphones",
+    "price": "99",
+    "info": "This is the latest and greatest product from Derp corp.",
+    "image": "http://placehold.it/300x300/999/CCC"
+  },
+  {
+    "name": "Microphone 3",
+    "id": "10",
+    "category": "microphones",
+    "price": "99",
+    "info": "This is the latest and greatest product from Derp corp.",
+    "image": "http://placehold.it/300x300/999/CCC"
+  },
+  {
+    "name": "Microphone 4",
+    "id": "11",
+    "category": "microphones",
+    "price": "99",
+    "info": "This is the latest and greatest product from Derp corp.",
+    "image": "http://placehold.it/300x300/999/CCC"
+  },
+  {
+    "name": "Microphone 5",
+    "id": "12",
+    "category": "microphones",
+    "price": "99",
+    "info": "This is the latest and greatest product from Derp corp.",
+    "image": "http://placehold.it/300x300/999/CCC"
+  },
+  {
+    "name": "Light 2",
+    "id": "13",
     "category": "lights",
     "price": "99",
     "offer": "BOGOF",
@@ -22,26 +105,30 @@
   },
   {
     "name": "Product 3",
+    "id": "14",
     "category": "microphones",
     "price": "99",
     "image": "http://placehold.it/300x300/999/CCC"
   },
   {
     "name": "Product 4",
+    "id": "15",
     "category": "cameras",
     "price": "99",
     "offer": "No srsly GTFO",
     "image": "http://placehold.it/300x300/999/CCC"
   },
   {
-    "name": "Product 5",
-    "category": "Lorem ipsum dolor sit amet",
+    "name": "Light 5",
+    "id": "16",
+    "category": "lights",
     "price": "99",
     "image": "http://placehold.it/300x300/999/CCC"
   },
   {
-    "name": "Product 6",
-    "category": "Lorem ipsum dolor sit amet",
+    "name": "Light 6",
+    "id": "17",
+    "category": "lights",
     "price": "99",
     "info": "This is the latest and greatest product from Derp corp.",
     "offer": "info with offer",

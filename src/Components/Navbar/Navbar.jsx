@@ -8,6 +8,7 @@ const Navbar = ({ onSearch }) => {
     <div className="navbar">
       <Search onSearch={onSearch}></Search>
       <Link to="/">Home</Link>
+      <Link to="/shoppingcart">Shopping cart</Link>
     </div>
   );
 };
