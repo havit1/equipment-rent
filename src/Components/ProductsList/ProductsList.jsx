@@ -1,49 +1,19 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import productsList from "../productsList.json";
+import { getProducts } from "../../Actions/products";
 
 class ProductsList extends Component {
-  state = {
-    allProducts: []
-  };
-
-  async componentDidMount() {
-    const allProducts = await this.getProducts(this.props.match.params.name);
-    this.setState({ allProducts });
-  }
-
-  async componentDidUpdate() {
-    if (this.props.match.params.name !== this.state.allProducts[0].category) {
-      debugger;
-      // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
-      const allProducts = await this.getProducts(this.props.match.params.name);
-      this.setState({ allProducts });
-    }
-  }
-
-  getProducts(product, updateState) {
-    return new Promise((resolve, reject) => {
-      const products = productsList.filter(
-        c => c.category === product || c.name === toString(product)
-      );
-      if (products) resolve(products);
-    });
+  componentDidMount() {
+    this.props.onGetProducts(this.props.match.params.name);
   }
 
   render() {
-    const { allProducts } = this.state;
-    const { searchedString } = this.props;
-
-    const searchedProduct = searchedString
-      ? searchedString => {
-          allProducts.filter(g => g.category === searchedString);
-        }
-      : allProducts;
-
     return (
       <div>
         <ol>
-          {searchedProduct.map(product => (
+          {this.props.products.map(product => (
             <li key={product.id}>
               <Link to={`/products/${product.category}/${product.id}`}>
                 {product.name}
@@ -56,4 +26,11 @@ class ProductsList extends Component {
   }
 }
 
-export default ProductsList;
+export default connect(
+  state => state,
+  dispatch => ({
+    onGetProducts: product => {
+      dispatch(getProducts(product));
+    }
+  })
+)(ProductsList);
