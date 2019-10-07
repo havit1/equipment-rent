@@ -1,49 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import productsList from "../productsList.json";
+import { loadItems } from "../../Actions/shoppingCart";
+import { connect } from "react-redux";
 
 class ShoppingCart extends Component {
-  state = {
-    goods: []
-  };
-
-  async componentDidMount() {
-    let goods = [];
-
-    for (let item of this.props.items) {
-      const product = await this.getTheGood(item);
-      goods.push(product);
-    }
-
-    this.setState({ goods });
-  }
-
-  getTheGood(productId) {
-    return new Promise((resolve, reject) => {
-      const product = productsList.find(({ id }) => id === productId);
-      if (product) resolve(product);
-      if (!product) reject("ERROR!!!");
-    });
+  componentDidMount() {
+    this.props.onLoadItems(this.props.shoppingCartIds);
   }
 
   render() {
+    const { shoppingCartInfo } = this.props;
     return (
       <div>
         <h1>Your shopping cart</h1>
-        {this.state.goods.length > 0 ? (
-          <ul>
-            {this.state.goods.map(item => (
-              <Link to={`/products/${item.category}/${item.id}`}>
-                <li>{item.name}</li>
-              </Link>
-            ))}
-          </ul>
-        ) : (
-          <h1>No items in shopping cart</h1>
-        )}
+        {shoppingCartInfo.map(product => (
+          <Link to={`/products/${product.category}/${product.id}`}>
+            <div>
+              <h1>{product.name}</h1>
+            </div>
+          </Link>
+        ))}
       </div>
     );
   }
 }
 
-export default ShoppingCart;
+export default connect(
+  state => state,
+  dispatch => ({
+    onLoadItems: ids => {
+      dispatch(loadItems(ids));
+    }
+  })
+)(ShoppingCart);

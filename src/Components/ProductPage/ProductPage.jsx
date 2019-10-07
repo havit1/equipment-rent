@@ -1,38 +1,37 @@
 import React, { Component } from "react";
-import productsList from "../productsList.json";
+import { getProductInfo, addToShoppingCart } from "../../Actions/products";
+import { connect } from "react-redux";
+
 import AddToShopCartBtn from "../Common/AddToShopCartBtn.jsx";
 
 class ProductPage extends Component {
-  state = {
-    product: {}
-  };
-
-  async componentDidMount() {
-    const product = await this.getProducts(this.props.match.params.id);
-    this.setState({ product });
-  }
-
-  getProducts(productId) {
-    return new Promise((resolve, reject) => {
-      const product = productsList.find(({ id }) => id === productId);
-      if (product) resolve(product);
-    });
+  componentDidMount() {
+    this.props.onGetProductInfo(this.props.match.params.id);
   }
 
   render() {
-    const { product } = this.state;
-    const { onAddItemInCart } = this.props;
+    const { product, onAddToShoppingCart } = this.props;
     return (
       <div>
         <h1>{product.name}</h1>
         <h2>{product.id}</h2>
         <AddToShopCartBtn
           id={product.id}
-          onAddItemInCart={onAddItemInCart}
+          onAddToShoppingCart={onAddToShoppingCart}
         ></AddToShopCartBtn>
       </div>
     );
   }
 }
 
-export default ProductPage;
+export default connect(
+  state => state,
+  dispatch => ({
+    onGetProductInfo: id => {
+      dispatch(getProductInfo(id));
+    },
+    onAddToShoppingCart: id => {
+      dispatch(addToShoppingCart(id));
+    }
+  })
+)(ProductPage);

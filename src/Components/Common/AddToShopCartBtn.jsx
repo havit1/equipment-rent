@@ -1,9 +1,11 @@
 import React from "react";
 
-const AddToShopCartBtn = ({ id, onAddItemInCart }) => {
+const AddToShopCartBtn = ({ id, onAddToShoppingCart }) => {
   return (
     <div>
-      <button onClick={() => onAddItemInCart(id)}>Add to shopping cart</button>
+      <button onClick={() => onAddToShoppingCart(id)}>
+        Add to shopping cart
+      </button>
     </div>
   );
 };

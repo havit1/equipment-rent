@@ -6,7 +6,6 @@ import ProductsList from "./Components/ProductsList/ProductsList";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
-import { connect } from "react-redux";
 import "./App.css";
 
 class App extends Component {
@@ -16,11 +15,8 @@ class App extends Component {
         <Navbar></Navbar>
         <div>
           <Switch>
-            {/* <Route path="/shoppingcart" component={<ShoppingCart />} />
-            <Route
-              path="/products/:name/:id"
-              component={<ProductPage />}
-            ></Route> */}
+            <Route path="/shoppingcart" component={ShoppingCart} />
+            <Route path="/products/:name/:id" component={ProductPage}></Route>
             <Route path="/products/:name" component={ProductsList} />
             <Route path="/" exact component={HomePage}></Route>
             <Route path="/404" component={ErrorPage} />

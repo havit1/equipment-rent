@@ -11,3 +11,18 @@ export const getProducts = product => dispatch => {
 
   dispatch({ type: "GET_PRODUCTS", payload: products });
 };
+
+export const getProductInfo = product => dispatch => {
+  console.log("GETTING PRODUCT INFO");
+
+  const productInfo = productsList.find(({ id }) => product === id);
+
+  console.log("product info", productInfo);
+
+  dispatch({ type: "GET_PRODUCT_INFO", payload: productInfo });
+};
+
+export const addToShoppingCart = productId => dispatch => {
+  console.log("Adding to shopping cart");
+  dispatch({ type: "ADD_TO_SHOPPING_CART", payload: productId });
+};

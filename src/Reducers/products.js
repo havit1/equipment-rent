@@ -1,6 +1,11 @@
 const initialState = [];
 
 export default function products(state = initialState, action) {
-  if (action.type === "GET_PRODUCTS") return action.payload;
-  else return state;
+  switch (action.type) {
+    case "GET_PRODUCTS":
+      return action.payload;
+
+    default:
+      return state;
+  }
 }
