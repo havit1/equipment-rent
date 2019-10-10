@@ -21,8 +21,3 @@ export const getProductInfo = product => dispatch => {
 
   dispatch({ type: "GET_PRODUCT_INFO", payload: productInfo });
 };
-
-export const addToShoppingCart = productId => dispatch => {
-  console.log("Adding to shopping cart");
-  dispatch({ type: "ADD_TO_SHOPPING_CART", payload: productId });
-};

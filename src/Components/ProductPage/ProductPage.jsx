@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { getProductInfo, addToShoppingCart } from "../../Actions/products";
+import { getProductInfo } from "../../Actions/products";
+import { addToShoppingCart } from "../../Actions/shoppingCart";
 import { connect } from "react-redux";
-
 import AddToShopCartBtn from "../Common/AddToShopCartBtn.jsx";
 
 class ProductPage extends Component {

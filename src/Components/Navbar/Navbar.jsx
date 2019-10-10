@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "../SearchBar/SearchBar";
 import "./Navbar.scss";
-import Search from "../Search/Search";
 
-const Navbar = ({ onSearch }) => {
+const Navbar = () => {
   return (
     <div className="navbar">
-      <Search onSearch={onSearch}></Search>
-      <Link to="/">Home</Link>
-      <Link to="/shoppingcart">Shopping cart</Link>
+      <Search></Search>
+      <div className="navbar__links">
+        <Link to="/">Home</Link>
+        <Link to="/shoppingcart">Shopping cart</Link>
+      </div>
     </div>
   );
 };

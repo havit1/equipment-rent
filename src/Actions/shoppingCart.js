@@ -11,3 +11,8 @@ export const loadItems = itemsId => dispatch => {
 
   dispatch({ type: "LOAD_PRODUCTS_INFO", payload: itemsInfo });
 };
+
+export const addToShoppingCart = productId => dispatch => {
+  console.log("Adding to shopping cart");
+  dispatch({ type: "ADD_TO_SHOPPING_CART", payload: productId });
+};
