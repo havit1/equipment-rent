@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="page-container">
-        <Navbar></Navbar>
+        <Navbar history={this.props.history}></Navbar>
         <div>
           <Switch>
             <Route path="/shoppingcart" component={ShoppingCart} />

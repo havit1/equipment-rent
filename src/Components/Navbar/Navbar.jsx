@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Search from "../SearchBar/SearchBar";
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = props => {
   return (
     <div className="navbar">
-      <Search></Search>
+      <Search history={props.history}></Search>
       <div className="navbar__links">
         <Link to="/">Home</Link>
         <Link to="/shoppingcart">Shopping cart</Link>

@@ -5,15 +5,18 @@ import productsList from "../productsList.json";
 
 class SearchPage extends Component {
   componentDidMount() {
-    let results = [];
-    if (results.length === 0)
-      results = [
-        ...productsList.filter(
-          item => item.name.indexOf(this.props.searchedString) > -1
-        )
-      ];
+    this.prevSearch = this.props.submittedSearchString;
 
+    let results = productsList.filter(
+      item => item.name.indexOf(this.props.submittedSearchString) > -1
+    );
     this.props.getSearchedProducts(results);
+  }
+
+  componentDidUpdate() {
+    if (this.prevSearch !== this.props.submittedSearchString) {
+      this.componentDidMount();
+    }
   }
 
   render() {
