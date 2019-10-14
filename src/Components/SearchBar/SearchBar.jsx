@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./SearchBar.scss";
 
@@ -9,7 +8,9 @@ class Search extends Component {
 
     this.props.onSubmitSearch(this.props.searchedString);
 
-    this.props.history.push(`/search/${this.props.searchedString}`);
+    this.props.history.push(
+      `/search/${this.props.searchedString.toLowerCase()}`
+    );
   };
 
   render() {

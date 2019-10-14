@@ -8,7 +8,15 @@ class SearchPage extends Component {
     this.prevSearch = this.props.submittedSearchString;
 
     let results = productsList.filter(
-      item => item.name.indexOf(this.props.submittedSearchString) > -1
+      item =>
+        item.name
+          .toUpperCase()
+          .indexOf(
+            (
+              this.props.submittedSearchString ||
+              this.props.location.pathname.split("/").pop()
+            ).toUpperCase()
+          ) > -1
     );
     this.props.getSearchedProducts(results);
   }
@@ -22,11 +30,18 @@ class SearchPage extends Component {
   render() {
     return (
       <div>
-        {this.props.items.map(product => (
-          <Link key={product.id} to={`/products/${product.name}/${product.id}`}>
-            {product.name}
-          </Link>
-        ))}
+        {this.props.items.length === 0 ? (
+          <h1>No items</h1>
+        ) : (
+          this.props.items.map(product => (
+            <Link
+              key={product.id}
+              to={`/products/${product.name}/${product.id}`}
+            >
+              {product.name}
+            </Link>
+          ))
+        )}
       </div>
     );
   }

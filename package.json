@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@hapi/joi": "^16.1.4",
+    "@hapi/joi": "^16.1.7",
+    "joi-browser": "^13.4.0",
     "node-sass": "^4.12.0",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",

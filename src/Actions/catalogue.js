@@ -1,4 +1,4 @@
-const genres = ["cameras", "microphones", "lights"];
+import genres from "../Components/genres.json";
 
 export const getGenres = () => dispatch => {
   console.log("GOT GENRES");

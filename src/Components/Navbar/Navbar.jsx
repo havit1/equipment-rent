@@ -10,6 +10,7 @@ const Navbar = props => {
       <div className="navbar__links">
         <Link to="/">Home</Link>
         <Link to="/shoppingcart">Shopping cart</Link>
+        <Link to="/add-item">Add new item</Link>
       </div>
     </div>
   );

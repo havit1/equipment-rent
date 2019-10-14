@@ -6,8 +6,9 @@ import ProductsList from "./Components/ProductsList/ProductsList";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
-import "./App.scss";
 import SearchPage from "./Components/SearchPage/SearchPage";
+import addNewItem from "./Components/addNewItem/addNewItem";
+import "./App.scss";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Navbar history={this.props.history}></Navbar>
         <div>
           <Switch>
+            <Route path="/add-item" component={addNewItem} />
             <Route path="/shoppingcart" component={ShoppingCart} />
             <Route path="/search/:name" component={SearchPage} />
             <Route path="/products/:name/:id" component={ProductPage}></Route>
