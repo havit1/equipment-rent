@@ -15,7 +15,7 @@ export const getProducts = product => dispatch => {
 export const getProductInfo = product => dispatch => {
   console.log("GETTING PRODUCT INFO");
 
-  const productInfo = productsList.find(({ id }) => product === id);
+  const productInfo = productsList.find(({ id }) => product == id);
 
   console.log("product info", productInfo);
 

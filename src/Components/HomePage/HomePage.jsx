@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Catalogue from "../Catalogue/Catalogue";
+import "./HomePage.scss";
 
 class HomePage extends Component {
   render() {
     return (
-      <div>
-        <h1>Home page</h1>
+      <div className="homePage__wrapper">
         <Catalogue></Catalogue>
       </div>
     );

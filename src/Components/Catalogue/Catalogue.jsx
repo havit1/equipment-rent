@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getGenres } from "../../Actions/catalogue";
+import "./Catalogue.scss";
 
 class Catalogue extends Component {
   componentDidMount() {
-    console.log("Hello");
     this.props.onGetCategories();
   }
 
@@ -13,10 +13,14 @@ class Catalogue extends Component {
     const { catalogue } = this.props;
 
     return (
-      <ol>
+      <ol className="catalogue">
         {catalogue.map(product => (
-          <li key={product}>
-            <Link to={`/products/${product}`}>{product}</Link>
+          <li className="catalogue__element" key={product}>
+            <Link to={`/products/${product}`}>
+              <image className="catalogue__element_image">
+                <h1>{product.toUpperCase()}</h1>
+              </image>
+            </Link>
           </li>
         ))}
       </ol>

@@ -11,6 +11,7 @@ class addData extends Form {
     data: {
       name: "",
       category: "",
+      id: "",
       price: "",
       description: ""
     },
@@ -27,7 +28,8 @@ class addData extends Form {
     price: Joi.number()
       .required()
       .label("Price"),
-    description: Joi.label("Description")
+    description: Joi.label("Description"),
+    id: Joi.label("Id")
   };
 
   componentDidMount() {
@@ -35,7 +37,10 @@ class addData extends Form {
   }
 
   onSubmit = () => {
-    items.push(this.state.data);
+    const item = { ...this.state.data };
+    item.id = Date.now();
+    console.log(item);
+    items.push(item);
   };
 
   render() {

@@ -1,12 +1,24 @@
+@import "../../styles/variables.scss";
+
 .navbar {
-  width: 100%;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 1rem;
-  border: 1px solid red;
+  background-color: #000000;
+  margin: 20px 0;
+  border-radius: $border-radius-default;
 
   &__links {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &_link {
+      padding: 5px;
+      margin: 5px;
+      color: #ffffff;
+    }
   }
 }

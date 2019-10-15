@@ -17,13 +17,19 @@ class Search extends Component {
     return (
       <form onSubmit={this.onSubmitSearch} className="navbar__search-form">
         <input
+          className="navbar__search-form_input"
           onChange={this.props.onSearchChange}
           ref={input => {
             this.trackInput = input;
           }}
           type="text"
         />
-        <button onClick={() => (this.trackInput.value = "")}>Search</button>
+        <button
+          className="navbar__search-form_button"
+          onClick={() => (this.trackInput.value = "")}
+        >
+          Search
+        </button>
       </form>
     );
   }

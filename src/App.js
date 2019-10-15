@@ -9,12 +9,14 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import addNewItem from "./Components/addNewItem/addNewItem";
 import "./App.scss";
+import Catalogue from "./Components/Catalogue/Catalogue";
 
 class App extends Component {
   render() {
     return (
       <div className="page-container">
         <Navbar history={this.props.history}></Navbar>
+
         <div>
           <Switch>
             <Route path="/add-item" component={addNewItem} />
