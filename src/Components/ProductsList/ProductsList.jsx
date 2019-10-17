@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProducts } from "../../Actions/products";
+import "./ProductsList.scss";
 
 class ProductsList extends Component {
   componentDidMount() {
@@ -10,10 +11,10 @@ class ProductsList extends Component {
 
   render() {
     return (
-      <div>
-        <ol>
+      <div className="product-list">
+        <ol className="product-list__items">
           {this.props.products.map(product => (
-            <li key={product.id}>
+            <li className="product-list__items_item " key={product.id}>
               <Link to={`/products/${product.category}/${product.id}`}>
                 {product.name}
               </Link>

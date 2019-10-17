@@ -6,8 +6,9 @@ class Search extends Component {
   onSubmitSearch = e => {
     e.preventDefault();
 
-    this.props.onSubmitSearch(this.props.searchedString);
+    if (!this.props.searchedString) return;
 
+    this.props.onSubmitSearch(this.props.searchedString);
     this.props.history.push(
       `/search/${this.props.searchedString.toLowerCase()}`
     );
@@ -24,12 +25,7 @@ class Search extends Component {
           }}
           type="text"
         />
-        <button
-          className="navbar__search-form_button"
-          onClick={() => (this.trackInput.value = "")}
-        >
-          Search
-        </button>
+        <button className="navbar__search-form_button">Search</button>
       </form>
     );
   }

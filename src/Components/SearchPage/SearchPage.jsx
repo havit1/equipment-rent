@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import productsList from "../productsList.json";
+import "./SearchPage.scss";
 
 class SearchPage extends Component {
   componentDidMount() {
@@ -9,36 +10,41 @@ class SearchPage extends Component {
 
     let results = productsList.filter(
       item =>
-        item.name
-          .toUpperCase()
-          .indexOf(
-            (
-              this.props.submittedSearchString ||
-              this.props.location.pathname.split("/").pop()
-            ).toUpperCase()
-          ) > -1
+        item.name.toUpperCase().indexOf(
+          (
+            this.props.submittedSearchString ||
+            this.props.location.pathname.split("/").pop()
+          ) //Что-бы после перезагрузки страницы не показывало все товары
+            .toUpperCase()
+        ) > -1
     );
     this.props.getSearchedProducts(results);
   }
 
   componentDidUpdate() {
     if (this.prevSearch !== this.props.submittedSearchString) {
-      this.componentDidMount();
+      this.componentDidMount(); //Делать новый поиск без потребности перезагружать страницу
     }
   }
 
   render() {
     return (
-      <div>
+      <div className="search-page">
         {this.props.items.length === 0 ? (
-          <h1>No items</h1>
+          <h1 className="search-page__no-items-error">
+            '{this.props.submittedSearchString}' doesn't exist here. I'm
+            sorry...
+          </h1>
         ) : (
           this.props.items.map(product => (
             <Link
               key={product.id}
+              className="search-page__element  item-card"
               to={`/products/${product.name}/${product.id}`}
             >
-              {product.name}
+              <div className="item-card__image"></div>
+              <h2 className="image-card__name">{product.name}</h2>
+              <p className="image-card__description">{product.description}</p>
             </Link>
           ))
         )}

@@ -17,7 +17,7 @@ class Catalogue extends Component {
         {catalogue.map(product => (
           <li className="catalogue__element" key={product}>
             <Link to={`/products/${product}`}>
-              <image className="catalogue__element_image">
+              <image className={`catalogue__element_image image-${product}`}>
                 <h1>{product.toUpperCase()}</h1>
               </image>
             </Link>

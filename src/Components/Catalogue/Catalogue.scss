@@ -1,19 +1,27 @@
+@import "../../styles/variables.scss";
+
 .catalogue {
   display: flex;
   list-style-type: none;
-  border: 1px solid red;
   padding: 0;
   justify-content: center;
   flex-wrap: wrap;
 
   &__element {
-    border: 1px solid palevioletred;
     margin: 10px;
     position: relative;
     width: 250px;
     height: 250px;
+    transition-duration: 200ms;
+
+    &:hover {
+      box-shadow: 5px 5px 5px 1px #292626;
+    }
 
     h1 {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
       color: #ffffff;
     }
 
@@ -24,6 +32,21 @@
       top: 0;
       transform: (translate(-50%));
       background-color: black;
+      border-radius: $border-radius-default;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
+  }
+
+  .image-cameras {
+    background-image: url("../../images/camera.jpg");
+  }
+
+  .image-microphones {
+    background-image: url("../../images/microphone.jpg");
+  }
+
+  .image-lights {
+    background-image: url("../../images/lights.jpg");
   }
 }
