@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { loadItems } from "../../Actions/shoppingCart";
 import { connect } from "react-redux";
+import cardGenerator from "../Common/cardGenerator";
+import "./ShoppingCart.scss";
 
-class ShoppingCart extends Component {
+class ShoppingCart extends cardGenerator {
   componentDidMount() {
     this.props.onLoadItems(this.props.shoppingCartIds);
   }
@@ -11,14 +13,11 @@ class ShoppingCart extends Component {
   render() {
     const { shoppingCartInfo } = this.props;
     return (
-      <div>
-        <h1>Your shopping cart</h1>
+      <div className="shopping-cart">
         {shoppingCartInfo.map(product => (
-          <Link to={`/products/${product.category}/${product.id}`}>
-            <div>
-              <h1>{product.name}</h1>
-            </div>
-          </Link>
+          <div key={product.id} className="item-card">
+            {this.renderCard(product, true, true, "shopping-cart__element")}
+          </div>
         ))}
       </div>
     );

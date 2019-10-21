@@ -1,6 +1,7 @@
-import genres from "../Components/genres.json";
+import JSONGenres from "../Components/genres.json";
 
 export const getGenres = () => dispatch => {
   console.log("GOT GENRES");
-  dispatch({ type: "GET_GENRES", payload: genres });
+  // const genres = JSON.stringify(JSONGenres);
+  dispatch({ type: "GET_GENRES", payload: JSONGenres });
 };

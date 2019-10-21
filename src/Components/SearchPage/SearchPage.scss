@@ -11,7 +11,7 @@
     font-size: 4rem;
   }
 
-  &__element {
+  .item-card {
     @include item-card;
   }
 }

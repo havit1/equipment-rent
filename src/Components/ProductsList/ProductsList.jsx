@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProducts } from "../../Actions/products";
+import cardGenerator from "../Common/cardGenerator";
+
 import "./ProductsList.scss";
 
-class ProductsList extends Component {
+class ProductsList extends cardGenerator {
   componentDidMount() {
     this.props.onGetProducts(this.props.match.params.name);
   }
@@ -12,15 +14,11 @@ class ProductsList extends Component {
   render() {
     return (
       <div className="product-list">
-        <ol className="product-list__items">
-          {this.props.products.map(product => (
-            <li className="product-list__items_item " key={product.id}>
-              <Link to={`/products/${product.category}/${product.id}`}>
-                {product.name}
-              </Link>
-            </li>
-          ))}
-        </ol>
+        {this.props.products.map(product => (
+          <div className="item-card">
+            {this.renderCard(product, true, true, "product-list__element")}
+          </div>
+        ))}
       </div>
     );
   }

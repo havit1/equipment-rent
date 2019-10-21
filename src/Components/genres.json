@@ -1,1 +1,14 @@
-["cameras", "microphones", "lights"]
+[
+  {
+    "_id": 21321321,
+    "name": "cameras"
+  },
+  {
+    "_id": 231312321321312,
+    "name": "microphones"
+  },
+  {
+    "_id": 12312321321321,
+    "name": "lights"
+  }
+]

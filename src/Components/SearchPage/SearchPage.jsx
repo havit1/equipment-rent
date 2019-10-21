@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import productsList from "../productsList.json";
+import cardGenerator from "../Common/cardGenerator";
 import "./SearchPage.scss";
 
-class SearchPage extends Component {
+class SearchPage extends cardGenerator {
   componentDidMount() {
     this.prevSearch = this.props.submittedSearchString;
 
@@ -37,15 +38,9 @@ class SearchPage extends Component {
           </h1>
         ) : (
           this.props.items.map(product => (
-            <Link
-              key={product.id}
-              className="search-page__element  item-card"
-              to={`/products/${product.name}/${product.id}`}
-            >
-              <div className="item-card__image"></div>
-              <h2 className="image-card__name">{product.name}</h2>
-              <p className="image-card__description">{product.description}</p>
-            </Link>
+            <div key={product.key} className="item-card">
+              {this.renderCard(product, true, true, "search-page__element")}
+            </div>
           ))
         )}
       </div>

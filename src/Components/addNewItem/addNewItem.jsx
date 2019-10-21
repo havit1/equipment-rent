@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import genres from "../genres.json";
 import items from "../productsList.json";
 import Joi from "joi-browser";
 import Form from "../Common/form";
+import { getGenres } from "../../Actions/catalogue";
+import "./addNewItem.scss";
 
 class addData extends Form {
   state = {
@@ -33,7 +34,8 @@ class addData extends Form {
   };
 
   componentDidMount() {
-    this.setState({ genres });
+    const genresNames = this.props.catalogue.map(category => category["name"]);
+    this.setState({ genres: genresNames });
   }
 
   onSubmit = () => {
@@ -61,6 +63,9 @@ export default connect(
   dispatch => ({
     onSubmitForm: () => {
       dispatch({ type: "ON_ADD_NEW_ITEM" });
+    },
+    onGetGenres: () => {
+      dispatch(getGenres());
     }
   })
 )(addData);

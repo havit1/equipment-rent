@@ -14,11 +14,13 @@ class Catalogue extends Component {
 
     return (
       <ol className="catalogue">
-        {catalogue.map(product => (
-          <li className="catalogue__element" key={product}>
-            <Link to={`/products/${product}`}>
-              <image className={`catalogue__element_image image-${product}`}>
-                <h1>{product.toUpperCase()}</h1>
+        {catalogue.map(categorie => (
+          <li className="catalogue__element" key={categorie.id}>
+            <Link to={`/products/${categorie.name}`}>
+              <image
+                className={`catalogue__element_image image-${categorie.name}`}
+              >
+                <h1>{categorie.name.toUpperCase()}</h1>
               </image>
             </Link>
           </li>
