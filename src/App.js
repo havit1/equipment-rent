@@ -10,6 +10,7 @@ import SearchPage from "./Components/SearchPage/SearchPage";
 import addNewItem from "./Components/addNewItem/addNewItem";
 import "./App.scss";
 import Catalogue from "./Components/Catalogue/Catalogue";
+import rememberAll from "./Components/rememberAllPage/test";
 
 class App extends Component {
   render() {
@@ -17,8 +18,9 @@ class App extends Component {
       <div className="page-container">
         <Navbar history={this.props.history}></Navbar>
 
-        <div>
+        <div className="main-content">
           <Switch>
+            <Route path="/test" component={rememberAll}></Route>
             <Route path="/add-item" component={addNewItem} />
             <Route path="/shoppingcart" component={ShoppingCart} />
             <Route path="/search/:name" component={SearchPage} />

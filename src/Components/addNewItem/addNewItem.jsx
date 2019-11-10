@@ -47,7 +47,7 @@ class addData extends Form {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         {this.renderInput("name", "Name")}
         {this.renderInput("price", "Price")}
         {this.renderSelect("category", "Category", this.state.genres)}

@@ -5,6 +5,7 @@ import catalogue from "./catalogue";
 import products from "./products";
 import product from "./product";
 import search from "./search";
+import remember from "./remember";
 
 export default combineReducers({
   shoppingCartIds,
@@ -12,5 +13,6 @@ export default combineReducers({
   products,
   product,
   shoppingCartInfo,
-  search
+  search,
+  remember
 });

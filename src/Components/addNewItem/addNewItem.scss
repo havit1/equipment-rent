@@ -1,26 +1,47 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixin.scss";
 
-.form-group {
-  margin: 10px auto;
-  width: 80%;
-  border: 1px solid red;
-  height: 3rem;
+.form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
 
-  & label {
-    margin-right: 5px;
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    align-items: center;
+
+    .alert {
+      text-align: left;
+      padding: 10px;
+    }
+
+    & label {
+      text-align: left;
+      width: 100px;
+    }
+
+    & input,
+    select {
+      position: relative;
+      width: 10%;
+      min-width: 155px;
+      padding: 4px;
+      height: 2rem;
+      border: 0.5px solid #000000;
+      border-radius: $border-radius-default;
+    }
   }
-
-  & input,
-  select {
+  .btn-primary {
+    @include button;
     width: 10%;
-    justify-self: flex-end;
-    min-width: 155px;
-    padding: 4px;
     height: 2rem;
-    border: 0.5px solid #000000;
+    border: 1px solid #000000;
     border-radius: $border-radius-default;
+
+    &:disabled {
+      background-color: grey;
+    }
   }
 }
