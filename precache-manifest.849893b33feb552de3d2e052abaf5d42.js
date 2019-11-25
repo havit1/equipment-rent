@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e634bee9ff5ee0d62e98ef069ad76398",
+    "revision": "90fda8e8ca80ffcb748d816f019a6de2",
     "url": "/equipment-rent/index.html"
   },
   {
-    "revision": "413ecaa8f72e2b1a5551",
-    "url": "/equipment-rent/static/css/main.b2ae16c9.chunk.css"
+    "revision": "94e90a5e5f7a13e3ec25",
+    "url": "/equipment-rent/static/css/main.6f9b4fd0.chunk.css"
   },
   {
-    "revision": "39a6dd86bbe567042f6f",
-    "url": "/equipment-rent/static/js/2.30e9fb07.chunk.js"
+    "revision": "10346edfe9cf110211dd",
+    "url": "/equipment-rent/static/js/2.345f7acd.chunk.js"
   },
   {
-    "revision": "413ecaa8f72e2b1a5551",
-    "url": "/equipment-rent/static/js/main.9f34531d.chunk.js"
+    "revision": "94e90a5e5f7a13e3ec25",
+    "url": "/equipment-rent/static/js/main.888f3494.chunk.js"
   },
   {
     "revision": "ea5d809a84183f46729b",

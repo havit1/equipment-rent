@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/equipment-rent/static/css/main.b2ae16c9.chunk.css",
-    "main.js": "/equipment-rent/static/js/main.9f34531d.chunk.js",
-    "main.js.map": "/equipment-rent/static/js/main.9f34531d.chunk.js.map",
+    "main.css": "/equipment-rent/static/css/main.6f9b4fd0.chunk.css",
+    "main.js": "/equipment-rent/static/js/main.888f3494.chunk.js",
+    "main.js.map": "/equipment-rent/static/js/main.888f3494.chunk.js.map",
     "runtime-main.js": "/equipment-rent/static/js/runtime-main.d81edaea.js",
     "runtime-main.js.map": "/equipment-rent/static/js/runtime-main.d81edaea.js.map",
-    "static/js/2.30e9fb07.chunk.js": "/equipment-rent/static/js/2.30e9fb07.chunk.js",
-    "static/js/2.30e9fb07.chunk.js.map": "/equipment-rent/static/js/2.30e9fb07.chunk.js.map",
+    "static/js/2.345f7acd.chunk.js": "/equipment-rent/static/js/2.345f7acd.chunk.js",
+    "static/js/2.345f7acd.chunk.js.map": "/equipment-rent/static/js/2.345f7acd.chunk.js.map",
     "index.html": "/equipment-rent/index.html",
-    "precache-manifest.9f0e7651bb29c8266893229b90976981.js": "/equipment-rent/precache-manifest.9f0e7651bb29c8266893229b90976981.js",
+    "precache-manifest.849893b33feb552de3d2e052abaf5d42.js": "/equipment-rent/precache-manifest.849893b33feb552de3d2e052abaf5d42.js",
     "service-worker.js": "/equipment-rent/service-worker.js",
-    "static/css/main.b2ae16c9.chunk.css.map": "/equipment-rent/static/css/main.b2ae16c9.chunk.css.map",
+    "static/css/main.6f9b4fd0.chunk.css.map": "/equipment-rent/static/css/main.6f9b4fd0.chunk.css.map",
     "static/media/Catalogue.scss": "/equipment-rent/static/media/microphone.9e73131b.jpg",
     "static/media/App.scss": "/equipment-rent/static/media/sf-pro-display_semibold.a1657f43.woff2"
   }
