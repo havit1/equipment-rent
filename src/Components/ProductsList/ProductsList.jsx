@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { connect } from "react-redux";
 import { getProducts } from "../../Actions/products";
 import cardGenerator from "../Common/cardGenerator";

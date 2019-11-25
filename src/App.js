@@ -9,7 +9,6 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import addNewItem from "./Components/addNewItem/addNewItem";
 import "./App.scss";
-import Catalogue from "./Components/Catalogue/Catalogue";
 import rememberAll from "./Components/rememberAllPage/test";
 
 class App extends Component {

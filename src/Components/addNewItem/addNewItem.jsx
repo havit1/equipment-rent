@@ -16,6 +16,7 @@ class addData extends Form {
       description: "",
       youtubeLink: ""
     },
+    buttonInfo: { class: "btn btn-primary", text: "Add new item" },
     errors: {}
   };
 
@@ -41,8 +42,20 @@ class addData extends Form {
   onSubmit = () => {
     const item = { ...this.state.data };
     item.id = Date.now();
-    console.log(item);
     items.push(item);
+
+    const buttonInfo = { class: "btn-success btn", text: "Added" };
+    this.setState({ buttonInfo });
+    this.setState({
+      data: {
+        name: "",
+        category: "",
+        id: "",
+        price: "",
+        description: "",
+        youtubeLink: ""
+      }
+    });
   };
 
   render() {
@@ -53,7 +66,10 @@ class addData extends Form {
         {this.renderInput("youtubeLink", "Youtube Link")}
         {this.renderSelect("category", "Category", this.props.catalogue)}
         {this.renderInput("description", "Description")}
-        {this.renderButton("Add new item")}
+        {this.renderButton(
+          this.state.buttonInfo.text,
+          this.state.buttonInfo.class
+        )}
       </form>
     );
   }
