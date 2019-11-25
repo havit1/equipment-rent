@@ -14,11 +14,13 @@ class ProductsList extends cardGenerator {
   render() {
     return (
       <div className="product-list">
-        {this.props.products.map(product => (
-          <div className="item-card">
-            {this.renderCard(product, true, true, "product-list__element")}
-          </div>
-        ))}
+        <div className="product-list__wrapper">
+          {this.props.products.map(product => (
+            <div className="item-card">
+              {this.renderCard(product, true, true, "product-list__element")}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

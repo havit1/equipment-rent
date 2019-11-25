@@ -2,6 +2,7 @@
   "name": "equipment-rent",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://havit1.github.io/equipment-rent/",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "gh-pages": "^2.1.1",

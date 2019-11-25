@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import items from "../productsList.json";
 import Joi from "joi-browser";
@@ -8,13 +8,13 @@ import "./addNewItem.scss";
 
 class addData extends Form {
   state = {
-    genres: [],
     data: {
       name: "",
       category: "",
       id: "",
       price: "",
-      description: ""
+      description: "",
+      youtubeLink: ""
     },
     errors: {}
   };
@@ -30,12 +30,12 @@ class addData extends Form {
       .required()
       .label("Price"),
     description: Joi.label("Description"),
-    id: Joi.label("Id")
+    id: Joi.label("Id"),
+    youtubeLink: Joi.string().label("Youtube Link")
   };
 
   componentDidMount() {
-    const genresNames = this.props.catalogue.map(category => category["name"]);
-    this.setState({ genres: genresNames });
+    this.props.onGetGenres();
   }
 
   onSubmit = () => {
@@ -50,7 +50,8 @@ class addData extends Form {
       <form className="form" onSubmit={this.handleSubmit}>
         {this.renderInput("name", "Name")}
         {this.renderInput("price", "Price")}
-        {this.renderSelect("category", "Category", this.state.genres)}
+        {this.renderInput("youtubeLink", "Youtube Link")}
+        {this.renderSelect("category", "Category", this.props.catalogue)}
         {this.renderInput("description", "Description")}
         {this.renderButton("Add new item")}
       </form>

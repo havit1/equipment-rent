@@ -10,20 +10,43 @@ class ProductPage extends Component {
     this.props.onGetProductInfo(this.props.match.params.id);
   }
 
+  itemIsInShoppingCart = productId => {
+    const test = console.log(test);
+    return test;
+  };
+
   render() {
     const { product, onAddToShoppingCart } = this.props;
     return (
       <div className="product-page">
         <h1 className="product-page__name">{product.name}</h1>
         <h2 className="product-page__id">id: {product.id}</h2>
-        <iframe
-          className="product-page__iframe"
-          src="https://www.youtube.com/embed/hmOZEAgXE3U"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        {product.description ? <p>{product.description}</p> : null}
+        {product.youtubeLink ? (
+          <iframe
+            className="product-page__iframe"
+            src={product.youtubeLink}
+            title={product.youtubeLink}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : null}
         <AddToShopCartBtn
+          className={
+            this.props.shoppingCartIds.find(
+              productId => this.props.product.id === productId
+            )
+              ? "add-button-done"
+              : "add-button"
+          }
+          text={
+            this.props.shoppingCartIds.find(
+              productId => this.props.product.id === productId
+            )
+              ? "Added"
+              : "Add item to shopping cart"
+          }
           id={product.id}
           onAddToShoppingCart={onAddToShoppingCart}
         ></AddToShopCartBtn>

@@ -17,11 +17,11 @@ class Catalogue extends Component {
         {catalogue.map(categorie => (
           <li className="catalogue__element" key={categorie.id}>
             <Link to={`/products/${categorie.name}`}>
-              <image
+              <span
                 className={`catalogue__element_image image-${categorie.name}`}
               >
                 <h1>{categorie.name.toUpperCase()}</h1>
-              </image>
+              </span>
             </Link>
           </li>
         ))}
