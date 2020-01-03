@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
-
 import shoppingCartIds, { shoppingCartInfo } from "./shoppingCart";
 import catalogue from "./catalogue";
-import products from "./products";
+import productsList from "./products";
 import product from "./product";
 import search from "./search";
 import remember from "./remember";
@@ -10,7 +9,7 @@ import remember from "./remember";
 export default combineReducers({
   shoppingCartIds,
   catalogue,
-  products,
+  productsList,
   product,
   shoppingCartInfo,
   search,

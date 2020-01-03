@@ -1,4 +1,3 @@
-import http from "../services/httpService";
 import axios from "axios";
 import { apiUrl } from "../config.json";
 import JSONGenres from "../Components/genres.json";

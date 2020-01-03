@@ -1,10 +1,13 @@
-const initialState = [];
+const initialState = { loading: false, products: [], error: "" };
 
-export default function products(state = initialState, action) {
+export default function productsList(state = initialState, action) {
   switch (action.type) {
-    case "GET_PRODUCTS":
-      return action.payload;
-
+    case "FETCH_PRODUCTS_REQUEST":
+      return { ...state, loading: true };
+    case "FETCH_PRODUCTS_SUCCESS":
+      return { loading: false, products: action.payload, error: "" };
+    case "FETCH_PRODUCTS_FAILURE":
+      return { loading: false, products: [], error: action.payload };
     default:
       return state;
   }
