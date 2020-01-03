@@ -9,6 +9,7 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import addNewItem from "./Components/addNewItem/addNewItem";
 import "./App.scss";
+import "react-toastify/dist/ReactToastify.css";
 import rememberAll from "./Components/rememberAllPage/test";
 
 class App extends Component {
@@ -16,7 +17,6 @@ class App extends Component {
     return (
       <div className="page-container">
         <Navbar history={this.props.history}></Navbar>
-
         <div className="main-content">
           <Switch>
             <Route path="/test" component={rememberAll}></Route>

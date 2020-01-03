@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getGenres } from "../../Actions/catalogue";
+import { fetchCategories } from "../../Actions/catalogue";
 import "./Catalogue.scss";
 
 class Catalogue extends Component {
   componentDidMount() {
-    this.props.onGetCategories();
+    this.props.fetchCategories();
   }
 
   render() {
     const { catalogue } = this.props;
 
-    return (
+    return catalogue.loading ? (
+      <h2>Loading</h2>
+    ) : catalogue.error ? (
+      <h2>{catalogue.error}</h2>
+    ) : (
       <ol className="catalogue">
-        {catalogue.map(categorie => (
+        {catalogue.categories.map(categorie => (
           <li className="catalogue__element" key={categorie.id}>
             <Link to={`/products/${categorie.name}`}>
               <span
@@ -30,11 +34,16 @@ class Catalogue extends Component {
   }
 }
 
-export default connect(
-  state => state,
-  dispatch => ({
-    onGetCategories: () => {
-      dispatch(getGenres());
-    }
-  })
-)(Catalogue);
+const mapStateToProps = state => {
+  return {
+    catalogue: state.catalogue
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCategories: () => dispatch(fetchCategories())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);
