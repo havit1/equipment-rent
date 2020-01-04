@@ -7,7 +7,6 @@ const Navbar = props => {
   return (
     <div className="navbar">
       <Search history={props.history}></Search>
-
       <div className="navbar__links">
         <Link className="navbar__links_link" to="/">
           Home
@@ -17,6 +16,9 @@ const Navbar = props => {
         </Link>
         <Link className="navbar__links_link" to="/add-item">
           Add new item
+        </Link>
+        <Link className="navbar__links_link" to="/login">
+          Login
         </Link>
       </div>
     </div>

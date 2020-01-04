@@ -1,20 +1,24 @@
 import React, { Component } from "react";
-import { getProductInfo } from "../../Actions/products";
+import { fetchConcreteProduct } from "../../Actions/concreteProduct";
+import { connect } from "react-redux";
 import {
   addToShoppingCart,
   removeFromShoppingCart
 } from "../../Actions/shoppingCart";
-import { connect } from "react-redux";
 import AddToShopCartBtn from "../Common/AddToShopCartBtn.jsx";
 import "./ProductPage.scss";
 
 class ProductPage extends Component {
   componentDidMount() {
-    this.props.onGetProductInfo(this.props.match.params.id);
+    this.props.fetchProduct(
+      this.props.match.params.id,
+      this.props.match.params.name
+    );
   }
 
   render() {
     const { product, onAddToShoppingCart } = this.props;
+    console.log(product);
     return (
       <div className="product-page">
         <h1 className="product-page__name">{product.name}</h1>
@@ -31,7 +35,7 @@ class ProductPage extends Component {
           ></iframe>
         ) : null}
         <div className="buttons-wrapper">
-          <AddToShopCartBtn
+          {/* <AddToShopCartBtn
             className={
               this.props.shoppingCartIds.find(
                 productId => this.props.product.id === productId
@@ -48,8 +52,8 @@ class ProductPage extends Component {
             }
             id={product.id}
             onAddToShoppingCart={onAddToShoppingCart}
-          ></AddToShopCartBtn>
-          {this.props.shoppingCartIds.find(
+          ></AddToShopCartBtn> */}
+          {/* {this.props.shoppingCartIds.find(
             productId => this.props.product.id === productId
           ) ? (
             <button
@@ -60,24 +64,30 @@ class ProductPage extends Component {
             >
               X
             </button>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     );
   }
 }
 
-export default connect(
-  state => state,
-  dispatch => ({
-    onGetProductInfo: id => {
-      dispatch(getProductInfo(id));
-    },
+const mapStateToProps = state => {
+  return {
+    product: state.product.product
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchProduct: (productId, category) =>
+      dispatch(fetchConcreteProduct(productId, category)),
     onAddToShoppingCart: id => {
       dispatch(addToShoppingCart(id));
     },
     onRemoveFromShoppingCart: id => {
       dispatch(removeFromShoppingCart(id));
     }
-  })
-)(ProductPage);
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

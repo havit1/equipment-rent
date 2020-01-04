@@ -8,8 +8,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter as HashRouter } from "react-router-dom";
 import thunk from "redux-thunk";
 import reducer from "./Reducers/index";
-import "./index.css";
 import { ToastContainer } from "react-toastify";
+import "./index.css";
 
 let store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 

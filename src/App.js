@@ -8,9 +8,9 @@ import ProductPage from "./Components/ProductPage/ProductPage";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import addNewItem from "./Components/addNewItem/addNewItem";
-import "./App.scss";
+import LoginPage from "./Components/LoginPage/LoginPage";
 import "react-toastify/dist/ReactToastify.css";
-import rememberAll from "./Components/rememberAllPage/test";
+import "./App.scss";
 
 class App extends Component {
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
         <Navbar history={this.props.history}></Navbar>
         <div className="main-content">
           <Switch>
-            <Route path="/test" component={rememberAll}></Route>
+            <Route path="/login" component={LoginPage}></Route>
             <Route path="/add-item" component={addNewItem} />
             <Route path="/shoppingcart" component={ShoppingCart} />
             <Route path="/search/:name" component={SearchPage} />
