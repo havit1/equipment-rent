@@ -4,44 +4,49 @@ import { fetchProducts } from "../../Actions/products";
 import cardGenerator from "../Common/cardGenerator";
 
 import "./ProductsList.scss";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 class ProductsList extends cardGenerator {
-  componentDidMount() {
-    this.props.fetchProducts(this.props.match.params.name);
-  }
-
   render() {
     const { productsList } = this.props;
 
-    return productsList.loading ? (
-      <h2>Loading</h2>
-    ) : productsList.error ? (
-      <h2>{productsList.error}</h2>
-    ) : (
+    return (
+      //   productsList.loading ? (
+      //   <h2>Loading</h2>
+      // ) : productsList.error ? (
+      //   <h2>{productsList.error}</h2>
+      // ) : (
       <div className="product-list">
         <div className="product-list__wrapper">
-          {productsList.products.map(product => (
-            <div className="item-card">
-              {this.renderCard(product, true, true, "product-list__element")}
-            </div>
-          ))}
+          {productsList &&
+            productsList.map(product => (
+              <div className="item-card" key={product.id}>
+                {this.renderCard(product, true, true, "product-list__element")}
+              </div>
+            ))}
         </div>
       </div>
     );
+    // );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  if (state.firestore.status) {
+    console.log("I'M LOADING HERE", state.firestore.status);
+  }
   return {
-    productsList: state.productsList
+    productsList:
+      state.firestore.ordered[
+        `categories/${ownProps.match.params.categoryId}/items`
+      ]
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchProducts: productsCategorie =>
-      dispatch(fetchProducts(productsCategorie))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsList);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect(props => [
+    { collection: `categories/${props.match.params.categoryId}/items` }
+  ])
+)(ProductsList);

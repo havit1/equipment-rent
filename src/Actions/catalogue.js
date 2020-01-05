@@ -1,5 +1,3 @@
-import axios from "axios";
-import { apiUrl } from "../config/config.json";
 import JSONGenres from "../Components/genres.json";
 import { toast } from "react-toastify";
 
@@ -31,19 +29,9 @@ export const fetchCategoriesFailure = error => {
   };
 };
 
-export const fetchCategories = () => {
+export const fetchCategories = categories => {
+  console.log("Testing");
   return dispatch => {
-    dispatch(fetchCategoriesRequest);
-    axios
-      .get(apiUrl + "categories")
-      .then(response => {
-        const categories = response.data;
-        dispatch(fetchCategoriesSucess(categories));
-      })
-      .catch(error => {
-        const errorMsg = error.message;
-        dispatch(fetchCategoriesFailure(errorMsg));
-        toast.error("An unexpected error occurred");
-      });
+    dispatch(fetchCategoriesSucess(categories));
   };
 };

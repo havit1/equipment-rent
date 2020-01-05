@@ -4,7 +4,7 @@ import catalogue from "./catalogue";
 import productsList from "./products";
 import product from "./product";
 import search from "./search";
-import remember from "./remember";
+import { firestoreReducer } from "redux-firestore";
 
 export default combineReducers({
   shoppingCartIds,
@@ -13,5 +13,5 @@ export default combineReducers({
   product,
   shoppingCartInfo,
   search,
-  remember
+  firestore: firestoreReducer
 });

@@ -7,18 +7,53 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import { BrowserRouter as HashRouter } from "react-router-dom";
 import thunk from "redux-thunk";
-import reducer from "./Reducers/index";
 import { ToastContainer } from "react-toastify";
+import {
+  getFirestore,
+  reduxFirestore,
+  createFirestoreInstance
+} from "redux-firestore";
+import {
+  getFirebase,
+  reactReduxFirebase,
+  ReactReduxFirebaseProvider
+} from "react-redux-firebase";
+
+import reducer from "./Reducers/index";
+import firebase, { fbConfig } from "./config/fbConfig";
+
 import "./index.css";
 
-let store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+// const middleware = [thunk.withExtraArgument({ getFirebase, getFirestore })];
+
+let store = createStore(
+  reducer,
+  composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(getFirebase, getFirestore)),
+    reduxFirestore(firebase)
+  )
+);
+
+const rrfConfig = {
+  userProfile: "users",
+  useFirestoreForProfile: true
+};
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+};
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter basename="/">
-      <ToastContainer />
-      <App></App>
-    </HashRouter>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <HashRouter basename="/">
+        <ToastContainer />
+        <App></App>
+      </HashRouter>
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById("root")
 );

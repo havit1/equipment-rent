@@ -23,8 +23,11 @@ class App extends Component {
             <Route path="/add-item" component={addNewItem} />
             <Route path="/shoppingcart" component={ShoppingCart} />
             <Route path="/search/:name" component={SearchPage} />
-            <Route path="/products/:name/:id" component={ProductPage}></Route>
-            <Route path="/products/:name" component={ProductsList} />
+            <Route
+              path="/:categoryName/:categoryId/:productId"
+              component={ProductPage}
+            ></Route>
+            <Route path="/:categoryName/:categoryId" component={ProductsList} />
             <Route path="/" exact component={HomePage}></Route>
             <Route path="/404" component={ErrorPage} />
             <Redirect to="/404" />

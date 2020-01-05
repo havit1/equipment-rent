@@ -1,49 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { fetchCategories } from "../../Actions/catalogue";
+import { useSelector } from "react-redux";
+import { useFirestoreConnect } from "react-redux-firebase";
+
 import "./Catalogue.scss";
 
-class Catalogue extends Component {
-  componentDidMount() {
-    this.props.fetchCategories();
-  }
+const Catalogue = () => {
+  useFirestoreConnect("categories");
 
-  render() {
-    const { catalogue } = this.props;
+  const categories = useSelector(state => state.firestore);
 
-    return catalogue.loading ? (
-      <h2>Loading</h2>
-    ) : catalogue.error ? (
-      <h2>{catalogue.error}</h2>
-    ) : (
-      <ol className="catalogue">
-        {catalogue.categories.map(categorie => (
-          <li className="catalogue__element" key={categorie.id}>
-            <Link to={`/products/${categorie.name}`}>
+  return categories.status.requesting.categories ? (
+    <h2>Loading</h2>
+  ) : categories.errors.byQuery.length > 0 ? (
+    <h2>{categories.error}</h2>
+  ) : (
+    <ol className="catalogue">
+      {categories.ordered.categories &&
+        categories.ordered.categories.map(category => (
+          <li className="catalogue__element" key={category.id}>
+            <Link to={`/${category.categoryName.toLowerCase()}/${category.id}`}>
               <span
-                className={`catalogue__element_image image-${categorie.name}`}
+                className={`catalogue__element_image image-${category.categoryName}`}
               >
-                <h1>{categorie.name.toUpperCase()}</h1>
+                <h1>{category.categoryName.toUpperCase()}</h1>
               </span>
             </Link>
           </li>
         ))}
-      </ol>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    catalogue: state.catalogue
-  };
+    </ol>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchCategories: () => dispatch(fetchCategories())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Catalogue);
+export default Catalogue;
