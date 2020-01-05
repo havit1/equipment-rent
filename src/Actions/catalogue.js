@@ -1,13 +1,15 @@
 import axios from "axios";
-import { apiUrl } from "../config.json";
+import { apiUrl } from "../config/config.json";
 import JSONGenres from "../Components/genres.json";
 import { toast } from "react-toastify";
 
+//********************************** */
 export const getGenres = () => dispatch => {
   console.log("GOT GENRES");
   // const genres = JSON.stringify(JSONGenres);
   dispatch({ type: "GET_GENRES", payload: JSONGenres });
 };
+//************************************ */
 
 export const fetchCategoriesRequest = () => {
   return {

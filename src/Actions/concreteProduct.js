@@ -1,4 +1,4 @@
-import { apiUrl } from "../config.json";
+import { apiUrl } from "../config/config.json";
 import axios from "axios";
 import { toast } from "react-toastify";
 

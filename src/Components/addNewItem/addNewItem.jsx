@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import items from "../productsList.json";
 import Joi from "joi-browser";
 import Form from "../Common/form";
-import { getGenres } from "../../Actions/catalogue";
+import { fetchCategories } from "../../Actions/catalogue";
 import "./addNewItem.scss";
 
 class addData extends Form {
@@ -36,7 +36,7 @@ class addData extends Form {
   };
 
   componentDidMount() {
-    this.props.onGetGenres();
+    this.props.fetchCategories();
   }
 
   onSubmit = () => {
@@ -75,14 +75,20 @@ class addData extends Form {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    newItem: state
+  };
+};
+
 export default connect(
   state => state,
   dispatch => ({
     onSubmitForm: () => {
       dispatch({ type: "ON_ADD_NEW_ITEM" });
     },
-    onGetGenres: () => {
-      dispatch(getGenres());
+    fetchCategories: () => {
+      dispatch(fetchCategories());
     }
   })
 )(addData);
