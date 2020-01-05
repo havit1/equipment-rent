@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProducts } from "../../Actions/products";
+// import { fetchProducts } from "../../Actions/products";
 import cardGenerator from "../Common/cardGenerator";
 
 import "./ProductsList.scss";
