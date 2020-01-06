@@ -1,4 +1,4 @@
-import { apiUrl } from "../config/config.json";
+// import { apiUrl } from "../config/config.json";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -25,18 +25,18 @@ export const fetchConcreteProductFailure = error => {
 export const fetchConcreteProduct = (productId, category) => {
   return dispatch => {
     dispatch(fetchConcreteProductRequest());
-    axios
-      .get(apiUrl + `productList`)
-      .then(response => {
-        const product = response.data[`${category}`].find(
-          product => product.id === productId
-        );
-        dispatch(fetchConcreteProductSucess(product));
-      })
-      .catch(error => {
-        const errorMsg = error.message;
-        dispatch(fetchConcreteProductFailure(errorMsg));
-        toast.error("An unexpected error occurred");
-      });
+    // axios
+    //   .get(apiUrl + `productList`)
+    //   .then(response => {
+    //     const product = response.data[`${category}`].find(
+    //       product => product.id === productId
+    //     );
+    //     dispatch(fetchConcreteProductSucess(product));
+    //   })
+    //   .catch(error => {
+    //     const errorMsg = error.message;
+    //     dispatch(fetchConcreteProductFailure(errorMsg));
+    //     toast.error("An unexpected error occurred");
+    //   });
   };
 };

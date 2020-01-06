@@ -1,3 +1,0 @@
-{
-  "/productList/:category": "productList?category=:category"
-}

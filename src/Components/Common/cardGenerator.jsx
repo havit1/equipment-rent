@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 class cardGenerator extends Component {
   renderCard = (
     product,
+    categoryId,
+    categoryName,
     withImage = false,
     withDescription = false,
     className
   ) => {
     return (
       <Link
-        to={`/products/${product.category}/${product.id}`}
+        to={`/${categoryId}/${categoryName}/${product.id}`}
         className={`${className}`}
       >
         {withImage ? <div></div> : null}

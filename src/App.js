@@ -8,34 +8,39 @@ import ProductPage from "./Components/ProductPage/ProductPage";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import addNewItem from "./Components/addNewItem/addNewItem";
-import LoginPage from "./Components/LoginPage/LoginPage";
+import LoginPage from "./Components/AuthPages/LoginPage";
+import LogoutPage from "./Components/AuthPages/LogoutPage";
+import ProtectedRoute from "./Components/Common/protectedRoute";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
+import RegisterPage from "./Components/AuthPages/RegisterPage";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="page-container">
-        <Navbar history={this.props.history}></Navbar>
-        <div className="main-content">
-          <Switch>
-            <Route path="/login" component={LoginPage}></Route>
-            <Route path="/add-item" component={addNewItem} />
-            <Route path="/shoppingcart" component={ShoppingCart} />
-            <Route path="/search/:name" component={SearchPage} />
-            <Route
-              path="/:categoryName/:categoryId/:productId"
-              component={ProductPage}
-            ></Route>
-            <Route path="/:categoryName/:categoryId" component={ProductsList} />
-            <Route path="/" exact component={HomePage}></Route>
-            <Route path="/404" component={ErrorPage} />
-            <Redirect to="/404" />
-          </Switch>
-        </div>
+const App = props => {
+  return (
+    <div className="page-container">
+      <Navbar history={props}></Navbar>
+      <div className="main-content">
+        <Switch>
+          {/* /login is protected route, but inside the component */}
+          <Route path="/login" exact component={LoginPage} />
+          {/* /register is protected route, but inside the component */}
+          <Route path="/register" exact component={RegisterPage} />
+          <ProtectedRoute path="/logout" exact component={LogoutPage} />
+          <ProtectedRoute path="/add-item" exact component={addNewItem} />
+          <ProtectedRoute path="/shoppingcart" exact component={ShoppingCart} />
+          <Route path="/search/:name" component={SearchPage} />
+          <Route
+            path="/:categoryName/:categoryId/:productId"
+            component={ProductPage}
+          ></Route>
+          <Route path="/:categoryName/:categoryId" component={ProductsList} />
+          <Route path="/" exact component={HomePage}></Route>
+          <Route path="/404" component={ErrorPage} />
+          <Redirect to="/404" />
+        </Switch>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default withRouter(App);
