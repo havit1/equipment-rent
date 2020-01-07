@@ -1,16 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import items from "../productsList.json";
 import Joi from "joi-browser";
 import Form from "../Common/form";
-import { fetchCategories } from "../../Actions/catalogue";
-import "./addNewItem.scss";
+import "./AddNewItem.scss";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { addItemAction } from "../../Actions/addItemAction";
 
 class addData extends Form {
   state = {
     data: {
       name: "",
-      category: "",
+      category: {},
       id: "",
       price: "",
       description: "",
@@ -35,36 +36,17 @@ class addData extends Form {
     youtubeLink: Joi.string().label("Youtube Link")
   };
 
-  componentDidMount() {
-    this.props.fetchCategories();
-  }
-
-  onSubmit = () => {
-    const item = { ...this.state.data };
-    item.id = Date.now();
-    items.push(item);
-
-    const buttonInfo = { class: "btn-success btn", text: "Added" };
-    this.setState({ buttonInfo });
-    this.setState({
-      data: {
-        name: "",
-        category: "",
-        id: "",
-        price: "",
-        description: "",
-        youtubeLink: ""
-      }
-    });
-  };
-
   render() {
+    const { categories, handleAddNewItem } = this.props;
+
+    if (!categories) return <h1>LOADING</h1>;
+
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={handleAddNewItem(this.state.data)}>
         {this.renderInput("name", "Name")}
         {this.renderInput("price", "Price")}
         {this.renderInput("youtubeLink", "Youtube Link")}
-        {this.renderSelect("category", "Category", this.props.catalogue)}
+        {this.renderSelect("category", "Category", categories)}
         {this.renderInput("description", "Description")}
         {this.renderButton(
           this.state.buttonInfo.text,
@@ -77,18 +59,17 @@ class addData extends Form {
 
 const mapStateToProps = state => {
   return {
-    newItem: state
+    categories: state.firestore.ordered.categories
   };
 };
 
-export default connect(
-  state => state,
-  dispatch => ({
-    onSubmitForm: () => {
-      dispatch({ type: "ON_ADD_NEW_ITEM" });
-    },
-    fetchCategories: () => {
-      dispatch(fetchCategories());
-    }
-  })
+const mapDispatchToProps = dispatch => {
+  return {
+    handleAddNewItem: newItem => dispatch(addItemAction(newItem))
+  };
+};
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect(() => [{ collection: `categories` }])
 )(addData);

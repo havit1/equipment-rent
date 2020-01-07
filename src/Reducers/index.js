@@ -5,6 +5,7 @@ import search from "./search";
 import authReducer from "./authReducer";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
+import addNewProductReducer from "./addNewProductReducer";
 
 // import catalogue from "./catalogue";
 // import productsList from "./products";
@@ -14,9 +15,10 @@ export default combineReducers({
   auth: authReducer,
   // catalogue,
   // productsList,
-  product,
-  shoppingCartInfo,
+  // product,
+  // shoppingCartInfo,
   search,
   firestore: firestoreReducer,
-  firebase: firebaseReducer
+  firebase: firebaseReducer,
+  addNewProductReducer
 });

@@ -7,6 +7,7 @@ import "./Navbar.scss";
 
 const Navbar = props => {
   const signedIn = useSelector(state => state.firebase.auth.uid);
+  const userInfo = useSelector(state => state.firebase.profile);
   return (
     <div className="navbar">
       <Search history={props.history}></Search>
@@ -31,9 +32,16 @@ const Navbar = props => {
             </Link>
           </React.Fragment>
         ) : (
-          <Link className="navbar__links_link" to="/logout">
-            Logout
-          </Link>
+          <React.Fragment>
+            <Link className="navbar__links_link" to="/logout">
+              Logout
+            </Link>
+            {userInfo.initials ? (
+              <Link className="navbar__links_link" to="/logout">
+                {userInfo.initials}
+              </Link>
+            ) : null}
+          </React.Fragment>
         )}
       </div>
     </div>
