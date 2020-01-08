@@ -4,14 +4,14 @@ export const addItemAction = newItem => {
     const profile = getState().firebase.profile;
     const ownerId = getState().firebase.auth.uid;
 
-    console.log(profile);
+    console.log(profile, ownerId);
 
     firestore
       .collection(`categories/${newItem.category}/items`)
       .add({
         ...newItem,
         ownerFirstName: profile.firstName,
-        ownerSecondName: profile.secondName,
+        ownerLastName: profile.lastName,
         ownerId,
         createdAt: new Date()
       })

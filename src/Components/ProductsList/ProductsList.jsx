@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import cardGenerator from "../Common/cardGenerator";
-
-import "./ProductsList.scss";
-import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import cardGenerator from "../Common/cardGenerator";
+import "./ProductsList.scss";
 
 class ProductsList extends cardGenerator {
   render() {
     const { productsList, match } = this.props;
+
     return (
       <div className="product-list">
         <div className="product-list__wrapper">
@@ -32,8 +32,6 @@ class ProductsList extends cardGenerator {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  if (state.firestore.status) {
-  }
   return {
     productsList:
       state.firestore.ordered[
@@ -43,8 +41,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default compose(
-  connect(mapStateToProps),
   firestoreConnect(props => [
     { collection: `categories/${props.match.params.categoryId}/items` }
-  ])
+  ]),
+  connect(mapStateToProps)
 )(ProductsList);

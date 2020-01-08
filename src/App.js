@@ -7,7 +7,7 @@ import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 import SearchPage from "./Components/SearchPage/SearchPage";
-import AddNewItem from "./Components/AddNewItemPage/AddNewItem";
+import ItemConfigPage from "./Components/ItemConfigPage/ItemConfigPage";
 import LoginPage from "./Components/AuthPages/LoginPage";
 import LogoutPage from "./Components/AuthPages/LogoutPage";
 import ProtectedRoute from "./Components/Common/protectedRoute";
@@ -26,7 +26,11 @@ const App = props => {
           {/* /register is protected route, but inside the component */}
           <Route path="/register" exact component={RegisterPage} />
           <ProtectedRoute path="/logout" exact component={LogoutPage} />
-          <ProtectedRoute path="/add-item" exact component={AddNewItem} />
+          <ProtectedRoute
+            path="/item-configuration"
+            exact
+            component={ItemConfigPage}
+          />
           <ProtectedRoute path="/shoppingcart" exact component={ShoppingCart} />
           <Route path="/search/:name" component={SearchPage} />
           <Route

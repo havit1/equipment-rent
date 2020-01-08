@@ -2,22 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 import Joi from "joi-browser";
 import Form from "../Common/form";
-import "./AddNewItem.scss";
+import "./ItemConfigPage.scss";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { addItemAction } from "../../Actions/addItemAction";
 
-class addData extends Form {
+class ItemConfigPage extends Form {
   state = {
     data: {
       name: "",
-      category: {},
-      id: "",
+      category: "",
       price: "",
       description: "",
       youtubeLink: ""
     },
-    buttonInfo: { class: "btn btn-primary", text: "Add new item" },
+    buttonInfo: { class: "btn btn-primary", text: "Save" },
     errors: {}
   };
 
@@ -36,13 +35,19 @@ class addData extends Form {
     youtubeLink: Joi.string().label("Youtube Link")
   };
 
+  onSubmit = () => {
+    this.props.handleAddNewItem(this.state.data);
+
+    this.props.history.push("/");
+  };
+
   render() {
-    const { categories, handleAddNewItem } = this.props;
+    const { categories } = this.props;
 
     if (!categories) return <h1>LOADING</h1>;
 
     return (
-      <form className="form" onSubmit={handleAddNewItem(this.state.data)}>
+      <form className="form" onSubmit={this.handleSubmit}>
         {this.renderInput("name", "Name")}
         {this.renderInput("price", "Price")}
         {this.renderInput("youtubeLink", "Youtube Link")}
@@ -72,4 +77,4 @@ const mapDispatchToProps = dispatch => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect(() => [{ collection: `categories` }])
-)(addData);
+)(ItemConfigPage);

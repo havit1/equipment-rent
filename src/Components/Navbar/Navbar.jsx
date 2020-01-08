@@ -18,7 +18,7 @@ const Navbar = props => {
         <Link className="navbar__links_link" to="/shoppingcart">
           Shopping cart
         </Link>
-        <Link className="navbar__links_link" to="/add-item">
+        <Link className="navbar__links_link" to="/item-configuration">
           Add new item
         </Link>
 
