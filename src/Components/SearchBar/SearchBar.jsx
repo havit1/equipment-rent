@@ -3,12 +3,18 @@ import { connect } from "react-redux";
 import "./SearchBar.scss";
 
 class Search extends Component {
+  state = {
+    searchedString: ""
+  };
+
+  onInputChange = e => {
+    let searchedString = e.currentTarget.value;
+    this.setState({ searchedString });
+  };
+
   onSubmitSearch = e => {
     e.preventDefault();
 
-    if (!this.props.searchedString) return;
-
-    this.props.onSubmitSearch(this.props.searchedString);
     this.props.history.push(
       `/search/${this.props.searchedString.toLowerCase()}`
     );
@@ -16,35 +22,29 @@ class Search extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmitSearch} className="navbar__search-form">
-        <input
-          className="navbar__search-form_input"
-          onChange={this.props.onSearchChange}
-          ref={input => {
-            this.trackInput = input;
-          }}
+      <form className="search-form">
+        {/* <input
+          onChange={this.onInputChange}
+          value={this.state.searchedString}
+          className="search-form__input"
           type="text"
         />
-        <button className="navbar__search-form_button">Search</button>
+        <button className="search-form__button">Search</button> */}
+        <h3 style={{ color: "white" }}>
+          NO SEARCH, BECAUSE FIRESTORE DOESN'T SUPPORT "COLLECTION GROUP
+          QUERIES" AT THE MOMENT
+        </h3>
       </form>
     );
   }
 }
 
-export default connect(
-  state => state.search,
-  dispatch => ({
-    onSearchChange: e => {
-      dispatch({
-        type: "ON_UPDATE_SEARCH_STRING",
-        payload: e.currentTarget.value ? e.currentTarget.value : null
-      });
-    },
-    onSubmitSearch: string => {
-      dispatch({
-        type: "ON_SUBMIT_SEARCH",
-        payload: string
-      });
-    }
-  })
-)(Search);
+const mapStateToProps = (state, ownProps) => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

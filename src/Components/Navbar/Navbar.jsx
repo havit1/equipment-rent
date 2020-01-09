@@ -15,7 +15,7 @@ const Navbar = props => {
         <Link className="navbar__links_link" to="/">
           Home
         </Link>
-        <Link className="navbar__links_link" to="/shoppingcart">
+        <Link className="navbar__links_link" to="/saved-products">
           Shopping cart
         </Link>
         <Link className="navbar__links_link" to="/item-configuration">
@@ -37,7 +37,7 @@ const Navbar = props => {
               Logout
             </Link>
             {userInfo.initials ? (
-              <Link className="navbar__links_link" to="/logout">
+              <Link className="navbar__links_link" to="/profile">
                 {userInfo.initials}
               </Link>
             ) : null}

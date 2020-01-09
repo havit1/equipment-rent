@@ -1,13 +1,10 @@
 import React from "react";
-import { loadItems } from "../../Actions/shoppingCart";
 import { connect } from "react-redux";
 import cardGenerator from "../Common/cardGenerator";
-import "./ShoppingCart.scss";
+import "./UsersSavedProductPage.scss";
 
 class ShoppingCart extends cardGenerator {
-  componentDidMount() {
-    this.props.onLoadItems(this.props.shoppingCartIds);
-  }
+  componentDidMount() {}
 
   render() {
     const { shoppingCartInfo } = this.props;
@@ -27,11 +24,10 @@ class ShoppingCart extends cardGenerator {
   }
 }
 
-export default connect(
-  state => state,
-  dispatch => ({
-    onLoadItems: ids => {
-      dispatch(loadItems(ids));
-    }
-  })
-)(ShoppingCart);
+const mapStateToProps = (state, ownProps) => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

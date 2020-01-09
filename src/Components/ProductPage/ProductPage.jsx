@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { fetchSaveItem } from "../../Actions/usersSavedProductsAction";
 import "./ProductPage.scss";
 
 class ProductPage extends Component {
   render() {
-    const { product, match } = this.props;
+    const { product, match, handleSave } = this.props;
 
     const REALproduct = product
       ? product.find(product => product.id === match.params.productId)
@@ -15,8 +16,13 @@ class ProductPage extends Component {
     /* ^^^^ THIS HAS TO BA CHANGED ^^^^ */
 
     return (
-      <div className="product-page">
-        {REALproduct && <h1>{REALproduct.name}</h1>}
+      <div>
+        <div className="product-page">
+          {REALproduct && <h1>{REALproduct.name}</h1>}
+        </div>
+        <button onClick={() => handleSave(REALproduct)}>
+          Save this product
+        </button>
       </div>
     );
   }
@@ -32,11 +38,19 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSave: item => {
+      dispatch(fetchSaveItem(item));
+    }
+  };
+};
+
 export default compose(
   firestoreConnect(props => [
     { collection: `categories/${props.match.params.categoryId}/items` }
   ]),
   /* ^^^^ THIS HAS TO BA CHANGED ^^^^ */
 
-  connect(mapStateToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(ProductPage);

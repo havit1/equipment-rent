@@ -5,15 +5,15 @@ import HomePage from "./Components/HomePage/HomePage";
 import ProductsList from "./Components/ProductsList/ProductsList";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
 import ProductPage from "./Components/ProductPage/ProductPage";
-import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
+import UsersSavedProductPage from "./Components/UsersSavedProductPage/UsersSavedProductPage";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import ItemConfigPage from "./Components/ItemConfigPage/ItemConfigPage";
 import LoginPage from "./Components/AuthPages/LoginPage";
 import LogoutPage from "./Components/AuthPages/LogoutPage";
 import ProtectedRoute from "./Components/Common/protectedRoute";
+import RegisterPage from "./Components/AuthPages/RegisterPage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
-import RegisterPage from "./Components/AuthPages/RegisterPage";
 
 const App = props => {
   return (
@@ -31,7 +31,11 @@ const App = props => {
             exact
             component={ItemConfigPage}
           />
-          <ProtectedRoute path="/shoppingcart" exact component={ShoppingCart} />
+          <ProtectedRoute
+            path="/saved-products"
+            exact
+            component={UsersSavedProductPage}
+          />
           <Route path="/search/:name" component={SearchPage} />
           <Route
             path="/:categoryName/:categoryId/:productId"
