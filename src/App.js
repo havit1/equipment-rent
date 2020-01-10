@@ -28,7 +28,6 @@ const App = props => {
           <ProtectedRoute path="/logout" exact component={LogoutPage} />
           <ProtectedRoute
             path="/item-configuration"
-            exact
             component={ItemConfigPage}
           />
           <ProtectedRoute

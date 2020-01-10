@@ -1,16 +1,18 @@
 import { combineReducers } from "redux";
-import shoppingCartIds, { shoppingCartInfo } from "./usersSavedProductsReducer";
+import saveProductReducer from "./saveProductReducer";
 import search from "./search";
 import authReducer from "./authReducer";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
 import addNewProductReducer from "./addNewProductReducer";
+import usersSavedProductsReducer from "./usersSavedProductsReducer";
 
 export default combineReducers({
-  shoppingCartIds,
+  saveProductReducer,
   auth: authReducer,
   search,
   firestore: firestoreReducer,
   firebase: firebaseReducer,
-  addNewProductReducer
+  addNewProductReducer,
+  savedItems: usersSavedProductsReducer
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import { connect } from "react-redux";
 import Joi from "joi-browser";
 import Form from "../Common/form";
@@ -11,8 +11,10 @@ class ItemConfigPage extends Form {
   state = {
     data: {
       name: "",
-      category: "",
+      category: {},
       price: "",
+      ownerPhoneNumber: "",
+      ownerEmailAddress: "",
       description: "",
       youtubeLink: ""
     },
@@ -32,13 +34,29 @@ class ItemConfigPage extends Form {
       .label("Price"),
     description: Joi.label("Description"),
     id: Joi.label("Id"),
-    youtubeLink: Joi.string().label("Youtube Link")
+    youtubeLink: Joi.string().label("Youtube Link"),
+    ownerPhoneNumber: Joi.number()
+      .required()
+      .label("Phone number"),
+    ownerEmailAddress: Joi.string()
+      .email()
+      .required()
+      .label("Email address")
   };
 
   onSubmit = () => {
-    this.props.handleAddNewItem(this.state.data);
+    const data = { ...this.state.data };
+    const categoryId = this.state.data.category;
+    const category = this.props.categories.find(
+      category => categoryId === category.id
+    );
 
-    this.props.history.push("/");
+    data.category = category;
+
+    this.setState({ data }, () => {
+      this.props.handleAddNewItem(this.state.data);
+      this.props.history.push("/");
+    });
   };
 
   render() {
@@ -46,13 +64,17 @@ class ItemConfigPage extends Form {
 
     if (!categories) return <h1>LOADING</h1>;
 
+    console.log(this.state.data);
+
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         {this.renderInput("name", "Name")}
         {this.renderInput("price", "Price")}
+        {this.renderInput("ownerPhoneNumber", "Phone number")}
+        {this.renderInput("ownerEmailAddress", "Email address")}
         {this.renderInput("youtubeLink", "Youtube Link")}
         {this.renderSelect("category", "Category", categories)}
-        {this.renderInput("description", "Description")}
+        {this.renderTextarea("description", "Description")}
         {this.renderButton(
           this.state.buttonInfo.text,
           this.state.buttonInfo.class

@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { fetchSaveItem } from "../../Actions/usersSavedProductsAction";
+import { fetchSaveItem } from "../../Actions/saveDeleteProductAction";
+import { removeItemAction } from "../../Actions/removeItemAction";
+import { Link } from "react-router-dom";
 import "./ProductPage.scss";
 
 class ProductPage extends Component {
   render() {
-    const { product, match, handleSave } = this.props;
+    const { product, match, handleSave, uid, handleRemoveItem } = this.props;
 
     const REALproduct = product
       ? product.find(product => product.id === match.params.productId)
       : null;
-
     /* ^^^^ THIS HAS TO BA CHANGED ^^^^ */
 
     return (
@@ -20,8 +21,24 @@ class ProductPage extends Component {
         <div className="product-page">
           {REALproduct && <h1>{REALproduct.name}</h1>}
         </div>
+        {REALproduct && uid === REALproduct.ownerId ? (
+          <React.Fragment>
+            <Link to={`/item-configuration`}>
+              <button>Edit</button>
+            </Link>
+            <Link to="/">
+              <button
+                onClick={() => {
+                  handleRemoveItem(REALproduct);
+                }}
+              >
+                Remove this product
+              </button>
+            </Link>
+          </React.Fragment>
+        ) : null}
         <button onClick={() => handleSave(REALproduct)}>
-          Save this product
+          Bookmark this product
         </button>
       </div>
     );
@@ -29,12 +46,12 @@ class ProductPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     product:
       state.firestore.ordered[
         `categories/${ownProps.match.params.categoryId}/items`
-      ]
+      ],
+    uid: state.firebase.auth.uid
   };
 };
 
@@ -42,7 +59,8 @@ const mapDispatchToProps = dispatch => {
   return {
     handleSave: item => {
       dispatch(fetchSaveItem(item));
-    }
+    },
+    handleRemoveItem: item => dispatch(removeItemAction(item))
   };
 };
 

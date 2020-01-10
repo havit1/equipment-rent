@@ -1,32 +1,29 @@
-export const fetchSaveItemRequest = item => {
-  return { type: "FETCH_SAVE_ITEM_REQUEST", payload: item };
+export const fetchSavedItemsRequest = () => {
+  return { type: "FETCH_SAVED_ITEMS_REQUEST" };
 };
 
-export const fetchSaveItemSuccess = () => {
-  return { type: "FETCH_SAVE_ITEM_SUCCESS" };
+export const fetchSavedItemsSuccess = items => {
+  return { type: "FETCH_SAVED_ITEMS_SUCCESS", payload: items };
 };
 
-export const fetchSaveItemFailure = err => {
-  return { type: "FETCH_SAVE_ITEM_FAILURE", payload: err };
+export const fetchSavedItemsFailure = err => {
+  return { type: "FETCH_SAVED_ITEMS_FAILURE", payload: err };
 };
 
-export const fetchSaveItem = productId => {
-  //not just id atm
+export const fetchSavedItems = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    dispatch(fetchSaveItemRequest());
+    dispatch(fetchSavedItemsRequest());
+
     const firestore = getFirestore();
     const userId = getState().firebase.auth.uid;
 
     firestore
       .collection(`users/${userId}/savedProducts`)
-      .doc(productId.id)
-      .set({
-        ...productId,
-        createdAt: new Date()
+      .get()
+      .then(response => {
+        const items = response.docs.map(doc => doc.data());
+        dispatch(fetchSavedItemsSuccess(items));
       })
-      .then(() => {
-        dispatch(fetchSaveItemSuccess());
-      })
-      .catch(err => dispatch(fetchSaveItemFailure(err)));
+      .catch(err => dispatch(fetchSavedItemsFailure(err)));
   };
 };

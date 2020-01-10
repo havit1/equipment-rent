@@ -1,12 +1,12 @@
-const initialState = { err: "", loading: false, items: [] };
+const initialState = { err: "", loading: false };
 
 export default function saveProductReducer(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_SAVED_ITEMS_REQUEST":
+    case "FETCH_SAVE_ITEM_REQUEST":
       return { ...state, loading: true };
-    case "FETCH_SAVED_ITEMS_SUCCESS":
-      return { ...state, loading: false, items: action.payload };
-    case "FETCH_SAVED_ITEMS_FAILURE":
+    case "FETCH_SAVE_ITEM_SUCCESS":
+      return { ...state, loading: false };
+    case "FETCH_SAVE_ITEM_FAILURE":
       return {
         ...state,
         loading: false,

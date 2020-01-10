@@ -1,33 +1,52 @@
 import React from "react";
 import { connect } from "react-redux";
 import cardGenerator from "../Common/cardGenerator";
+import { fetchSavedItems } from "../../Actions/usersSavedProductsAction";
+import { fetchDeleteItem } from "../../Actions/saveDeleteProductAction";
 import "./UsersSavedProductPage.scss";
 
 class ShoppingCart extends cardGenerator {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.onLoadSavedItems();
+  }
 
   render() {
-    const { shoppingCartInfo } = this.props;
+    const { savedItems } = this.props;
+
     return (
       <div className="shopping-cart">
-        {shoppingCartInfo.length > 0 ? (
-          shoppingCartInfo.map(product => (
+        {savedItems.items.length &&
+          savedItems.items.map(product => (
             <div key={product.id} className="item-card">
-              {this.renderCard(product, true, true, "shopping-cart__element")}
+              <button onClick={() => this.props.onDeleteItem(product.id)}>
+                Delete
+              </button>
+              {this.renderCard(
+                product,
+                product.category.categoryName,
+                product.category.id,
+                true,
+                true,
+                "shopping-cart__element"
+              )}
             </div>
-          ))
-        ) : (
-          <h1>Nothing in you'r shopping cart at the moment...</h1>
-        )}
+          ))}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    savedItems: state.savedItems
+  };
 };
 
-const mapDispatchToProps = dispatch => {};
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadSavedItems: () => dispatch(fetchSavedItems()),
+    onDeleteItem: id => dispatch(fetchDeleteItem(id))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

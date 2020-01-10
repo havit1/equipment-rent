@@ -10,6 +10,8 @@ class cardGenerator extends Component {
     withDescription = false,
     className
   ) => {
+    // if (categoryName) categoryName = categoryName.toLowerCase();
+
     return (
       <Link
         to={`/${categoryId}/${categoryName}/${product.id}`}

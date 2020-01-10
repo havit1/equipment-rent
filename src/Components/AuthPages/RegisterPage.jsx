@@ -23,7 +23,7 @@ class RegisterPage extends Component {
   };
 
   render() {
-    const { uid } = this.props;
+    const { uid, authError } = this.props;
     if (uid) return <Redirect to="/" />;
 
     return (
@@ -33,10 +33,6 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="email">Email</label>
             <input onChange={this.handleChange} type="email" id="email" />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input onChange={this.handleChange} type="password" id="password" />
           </div>
           <div>
             <label htmlFor="firstName">First Name</label>
@@ -50,6 +46,11 @@ class RegisterPage extends Component {
             <label htmlFor="lastName">Last Name</label>
             <input onChange={this.handleChange} type="lastName" id="lastName" />
           </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input onChange={this.handleChange} type="password" id="password" />
+          </div>
+          <div>{authError && <p>{authError.message}</p>}</div>
           <button>Register</button>
         </form>
       </div>
@@ -59,6 +60,7 @@ class RegisterPage extends Component {
 
 const mapStateToProps = state => {
   return {
+    authError: state.auth.authError,
     auth: state.firebase.auth,
     uid: state.firebase.auth.uid
   };

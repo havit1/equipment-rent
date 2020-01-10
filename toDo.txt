@@ -8,3 +8,5 @@ but after fixing ^ that ^ this is also gonna be changed.
 
 - When possible - add searchBar and change usersSavedProduct action and reducer to save only productId (and maybe product's category for easier search proccess)
 and then search for it on Saved Products page instead of saving the whole product object.
+
+!!! - Create HOC for Catalogue, ProductsList, SearchPage
