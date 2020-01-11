@@ -5,7 +5,7 @@ import "./HomePage.scss";
 class HomePage extends Component {
   render() {
     return (
-      <div className="homePage__wrapper">
+      <div className="home-page">
         <Catalogue></Catalogue>
       </div>
     );

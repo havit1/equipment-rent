@@ -1,23 +1,36 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+
+$border-size: 1px;
 
 .navbar {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 1rem;
-  background-color: #000000;
-  margin: 20px 0;
-  border-radius: $border-radius-default;
+  top: 0;
+  left: 0;
+  width: 100vw;
 
   &__links {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    height: 100%;
+    text-align: right;
 
-    &_link {
-      padding: 5px;
-      margin: 5px;
-      color: #ffffff;
+    &-link {
+      display: inline;
+      padding-right: 1.5rem;
+
+      a {
+        font-size: 1.5rem;
+        @include transition-ease;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+
+      .activeNavLink {
+        position: relative;
+        color: $secondary-color;
+      }
     }
   }
 }

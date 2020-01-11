@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Search from "../SearchBar/SearchBar";
 import { useSelector } from "react-redux";
 
@@ -9,42 +9,58 @@ const Navbar = props => {
   const signedIn = useSelector(state => state.firebase.auth.uid);
   const userInfo = useSelector(state => state.firebase.profile);
   return (
-    <div className="navbar">
-      <Search history={props.history}></Search>
-      <div className="navbar__links">
-        <Link className="navbar__links_link" to="/">
-          Home
-        </Link>
-        <Link className="navbar__links_link" to="/saved-products">
-          Shopping cart
-        </Link>
-        <Link className="navbar__links_link" to="/item-configuration">
-          Add new item
-        </Link>
+    <nav className="navbar">
+      {/* <Search history={props.history}></Search> */}
+      <ul className="navbar__links">
+        <li className="navbar__links-link">
+          <NavLink activeClassName="activeNavLink" exact to="/">
+            Home
+          </NavLink>
+        </li>
+        <li className="navbar__links-link">
+          <NavLink activeClassName="activeNavLink" to="/saved-products">
+            Shopping cart
+          </NavLink>
+        </li>
+
+        <li className="navbar__links-link">
+          <NavLink activeClassName="activeNavLink" to="/item-configuration">
+            Add new item
+          </NavLink>
+        </li>
 
         {!signedIn ? (
           <React.Fragment>
-            <Link className="navbar__links_link" to="/login">
-              Login
-            </Link>
-            <Link className="navbar__links_link" to="/register">
-              Register
-            </Link>
+            <li className="navbar__links-link">
+              <NavLink activeClassName="activeNavLink" to="/login">
+                Login
+              </NavLink>
+            </li>
+            <li className="navbar__links-link">
+              <NavLink activeClassName="activeNavLink" to="/register">
+                Register
+              </NavLink>
+            </li>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Link className="navbar__links_link" to="/logout">
-              Logout
-            </Link>
+            <li className="navbar__links-link">
+              <NavLink activeClassName="activeNavLink" to="/logout">
+                Logout
+              </NavLink>
+            </li>
+
             {userInfo.initials ? (
-              <Link className="navbar__links_link" to="/profile">
-                {userInfo.initials}
-              </Link>
+              <li className="navbar__links-link">
+                <NavLink activeClassName="activeNavLink" to="/profile">
+                  {userInfo.initials}
+                </NavLink>
+              </li>
             ) : null}
           </React.Fragment>
         )}
-      </div>
-    </div>
+      </ul>
+    </nav>
   );
 };
 

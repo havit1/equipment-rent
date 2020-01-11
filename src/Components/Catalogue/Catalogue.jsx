@@ -10,25 +10,47 @@ const Catalogue = () => {
 
   const categories = useSelector(state => state.firestore);
 
-  return categories.status.requesting.categories ? (
-    <h2>Loading</h2>
-  ) : categories.errors.byQuery.length > 0 ? (
-    <h2>{categories.error}</h2>
-  ) : (
-    <ol className="catalogue">
-      {categories.ordered.categories &&
-        categories.ordered.categories.map(category => (
-          <li className="catalogue__element" key={category.id}>
-            <Link to={`/${category.categoryName.toLowerCase()}/${category.id}`}>
-              <span
-                className={`catalogue__element_image image-${category.categoryName}`}
-              >
-                <h1>{category.categoryName.toUpperCase()}</h1>
-              </span>
-            </Link>
-          </li>
-        ))}
-    </ol>
+  return (
+    <section className="catalogue-wrapper">
+      {categories.status.requesting.categories ? (
+        <h2 className="spinner">Loading</h2>
+      ) : categories.errors.byQuery.length > 0 ? (
+        <h2 className="error">{categories.error}</h2>
+      ) : (
+        <div className="catalogue">
+          <ol className="catalogue__elements">
+            {categories.ordered.categories &&
+              categories.ordered.categories.map(category => (
+                <li className="catalogue__elements-element" key={category.id}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <Link
+                    to={`/${category.categoryName.toLowerCase()}/${
+                      category.id
+                    }`}
+                  >
+                    <div
+                      onMouseEnter={() =>
+                        console.log(
+                          `url("src/assets/images/${category.categoryName}.jpg")`
+                        )
+                      }
+                      style={{
+                        backgroundImage: `url({})`
+                      }}
+                      className={`catalogue__elements-element-image`}
+                    >
+                      <h1>{category.categoryName.toUpperCase()}</h1>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+          </ol>
+        </div>
+      )}
+    </section>
   );
 };
 

@@ -18,8 +18,10 @@ import "./App.scss";
 const App = props => {
   return (
     <div className="page-container">
-      <Navbar history={props}></Navbar>
-      <div className="main-content">
+      <header className="header">
+        <Navbar history={props}></Navbar>
+      </header>
+      <main>
         <Switch>
           {/* /login is protected route, but inside the component */}
           <Route path="/login" exact component={LoginPage} />
@@ -45,7 +47,8 @@ const App = props => {
           <Route path="/404" component={ErrorPage} />
           <Redirect to="/404" />
         </Switch>
-      </div>
+        <footer>&copy; Copyright 2020</footer>
+      </main>
     </div>
   );
 };
