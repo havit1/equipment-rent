@@ -32,17 +32,14 @@ const Catalogue = () => {
                     }`}
                   >
                     <div
-                      onMouseEnter={() =>
-                        console.log(
-                          `url("src/assets/images/${category.categoryName}.jpg")`
-                        )
-                      }
-                      style={{
-                        backgroundImage: `url({})`
-                      }}
-                      className={`catalogue__elements-element-image`}
+                      // style={{
+                      //   backgroundImage: `url(${category.categoryName}Background)`
+                      // }}
+                      className={`catalogue__elements-element-image ${category.categoryName}`}
                     >
-                      <h1>{category.categoryName.toUpperCase()}</h1>
+                      <h1 className={"catalogue__elements-element-text"}>
+                        {category.categoryName.toUpperCase()}
+                      </h1>
                     </div>
                   </Link>
                 </li>

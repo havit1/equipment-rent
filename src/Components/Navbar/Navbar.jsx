@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import Search from "../SearchBar/SearchBar";
+import { NavLink } from "react-router-dom";
+// import Search from "../SearchBar/SearchBar";
 import { useSelector } from "react-redux";
 
 import "./Navbar.scss";

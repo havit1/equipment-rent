@@ -1,19 +1,50 @@
 @import "../../styles/mixin.scss";
+@import "../../styles/variables.scss";
+
+.cameras {
+  background-image: url(../../assets/images/jakob-owens-LCiZmVUaEf0-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.microphones {
+  background-image: url(../../assets/images/Photo-by-Jonathan-Velasquez-on-Unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lights {
+  background-image: url(../../assets/images/Photo-by-william-f.-santos-on-Unsplash.jpg);
+  background-size: cover;
+}
 
 .product-list {
-  &__wrapper {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 95%;
-    margin: 0 auto;
-  }
+  padding-top: 20vh;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 
-  &__no-items-error {
-    font-size: 4rem;
-  }
-  .item-card {
-    @include item-card;
+  &__items {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: top;
+    min-height: 100%;
+
+    &-item {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-color: $primary-color;
+      box-shadow: $main-shadow;
+
+      .product-card {
+        @include item-card;
+      }
+    }
   }
 }

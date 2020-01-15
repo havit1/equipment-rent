@@ -7,19 +7,18 @@ class cardGenerator extends Component {
     categoryId,
     categoryName,
     withImage = false,
-    withDescription = false,
     className
   ) => {
-    // if (categoryName) categoryName = categoryName.toLowerCase();
-
     return (
       <Link
         to={`/${categoryId}/${categoryName}/${product.id}`}
         className={`${className}`}
       >
-        {withImage ? <div></div> : null}
-        <h2>{product.name}</h2>
-        {withDescription ? <p>{product.description}</p> : null}
+        {withImage ? <img src="" alt="Something cool"></img> : null}
+        <div>
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+        </div>
       </Link>
     );
   };
