@@ -1,56 +1,75 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixin.scss";
 
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.item-config-page {
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  background: linear-gradient(#f7bb97, #dd5e89);
 
-  .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 10px 0;
-    align-items: center;
+  &__form-wrapper {
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(#dd5e89, #f7bb97);
+    color: #ffffff;
+    width: 50%;
 
-    .alert {
-      text-align: left;
-      padding: 10px;
-    }
+    form {
+      display: grid;
+      grid-template-areas:
+        "input input input input"
+        "input input input input"
+        "input textarea textarea textarea"
+        "input select . button";
+      grid-template-columns: 10% 25% 10% 25%;
+      grid-template-rows: auto;
 
-    & label {
-      text-align: left;
-      width: 100px;
-    }
+      grid-gap: 20px;
 
-    & input,
-    select {
-      position: relative;
-      width: 10%;
-      min-width: 155px;
-      padding: 4px;
-      height: 2rem;
-      border: 0.5px solid #000000;
-      border-radius: $border-radius-default;
-    }
-  }
-  .btn {
-    &-success {
-      @include button;
-      width: 10%;
-      height: 2rem;
-      border: 1px solid #000000;
-      border-radius: $border-radius-default;
-      background-color: lightgreen;
-    }
-    &-primary {
-      @include button;
-      width: 10%;
-      height: 2rem;
-      border: 1px solid #000000;
-      border-radius: $border-radius-default;
+      textarea {
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 1rem;
+        border: none;
+        width: 40%;
+        height: 30%;
+        resize: none;
+        grid-area: textarea;
+        border: 1px solid $primary-color;
+        width: 100%;
+      }
 
-      &:disabled {
-        background-color: grey;
+      label {
+        grid-area: label;
+      }
+
+      select {
+        grid-area: select;
+        border: 1px solid $primary-color;
+        background: transparent;
+        color: #ffffff;
+        width: 100%;
+
+        option {
+          background-color: transparent;
+        }
+      }
+
+      input {
+        grid-area: input;
+        background: transparent;
+        border: none;
+        width: 100%;
+        @include inputWithLabel;
+      }
+
+      button {
+        grid-area: button;
+        @include button;
       }
     }
   }

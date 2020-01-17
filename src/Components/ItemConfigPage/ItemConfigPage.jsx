@@ -67,19 +67,23 @@ class ItemConfigPage extends Form {
     console.log(this.state.data);
 
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        {this.renderInput("name", "Name")}
-        {this.renderInput("price", "Price")}
-        {this.renderInput("ownerPhoneNumber", "Phone number")}
-        {this.renderInput("ownerEmailAddress", "Email address")}
-        {this.renderInput("youtubeLink", "Youtube Link")}
-        {this.renderSelect("category", "Category", categories)}
-        {this.renderTextarea("description", "Description")}
-        {this.renderButton(
-          this.state.buttonInfo.text,
-          this.state.buttonInfo.class
-        )}
-      </form>
+      <section className="item-config-page">
+        <div className="item-config-page__form-wrapper">
+          <form className="item-config-page__form" onSubmit={this.handleSubmit}>
+            {this.renderInput("name", "Name")}
+            {this.renderInput("price", "Price")}
+            {this.renderInput("ownerPhoneNumber", "Phone number")}
+            {this.renderInput("ownerEmailAddress", "Email address")}
+            {this.renderInput("youtubeLink", "Youtube Link")}
+            {this.renderSelect("category", "Category", categories)}
+            {this.renderTextarea("description", "Description")}
+            {this.renderButton(
+              this.state.buttonInfo.text,
+              this.state.buttonInfo.class
+            )}
+          </form>
+        </div>
+      </section>
     );
   }
 }

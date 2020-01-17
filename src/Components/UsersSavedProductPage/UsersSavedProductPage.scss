@@ -1,13 +1,41 @@
 @import "../../styles/mixin.scss";
+@import "../../styles/variables.scss";
 
 .shopping-cart {
-  width: 95%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  height: 100%;
+  overflow-y: auto;
+  padding-top: 20vh;
+  margin: 0;
+  padding-bottom: 10vh;
 
-  .item-card {
-    @include item-card;
+  &__items {
+    margin: 0 auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 50px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-height: 100%;
+
+    &-item {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-color: $primary-color;
+      box-shadow: $main-shadow;
+
+      &-delete-button {
+        position: absolute;
+        cursor: pointer;
+        border: none;
+        z-index: 1;
+        right: 0;
+      }
+
+      .product-card {
+        @include item-card;
+      }
+    }
   }
 }

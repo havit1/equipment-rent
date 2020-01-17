@@ -11,10 +11,10 @@ class ProductsList extends cardGenerator {
 
     return (
       <section className={`product-list ${match.params.categoryName}`}>
-        <div className="product-list__items">
+        <ul className="product-list__items">
           {productsList &&
             productsList.map(product => (
-              <div className="product-list__items-item" key={product.id}>
+              <li className="product-list__items-item" key={product.id}>
                 {this.renderCard(
                   product,
                   match.params.categoryName,
@@ -22,9 +22,9 @@ class ProductsList extends cardGenerator {
                   true,
                   "product-card"
                 )}
-              </div>
+              </li>
             ))}
-        </div>
+        </ul>
       </section>
     );
   }

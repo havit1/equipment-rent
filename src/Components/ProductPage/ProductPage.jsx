@@ -17,30 +17,58 @@ class ProductPage extends Component {
     /* ^^^^ THIS HAS TO BA CHANGED ^^^^ */
 
     return (
-      <div>
-        <div className="product-page">
-          {REALproduct && <h1>{REALproduct.name}</h1>}
-        </div>
-        {REALproduct && uid === REALproduct.ownerId ? (
-          <React.Fragment>
-            <Link to={`/item-configuration`}>
-              <button>Edit</button>
-            </Link>
-            <Link to="/">
+      <section className="product-page">
+        {REALproduct && (
+          <div className="product-page__wrapper">
+            <div className="product-page__image">Cool image</div>
+            <div className="product-page__info">
+              <h1 className="product-page__info-name">{REALproduct.name}</h1>
+              {uid === REALproduct.ownerId ? (
+                <div className="product-page__owner-options">
+                  <Link
+                    className="product-page__link"
+                    to={`/item-configuration`}
+                  >
+                    <button className="product-page__button">Edit</button>
+                  </Link>
+                  <Link className="product-page__link" to="/">
+                    <button
+                      className="product-page__button"
+                      onClick={() => {
+                        handleRemoveItem(REALproduct);
+                      }}
+                    >
+                      Remove this product
+                    </button>
+                  </Link>
+                </div>
+              ) : null}
+              <h3 className="product-page__info-price">{REALproduct.price}$</h3>
+              <p className="product-page__info-description">
+                {REALproduct.description}
+              </p>
+              <div className="product-page__owner">
+                <h3 className="product-page__owner-name">
+                  Owner: {REALproduct.ownerFirstName}{" "}
+                  {REALproduct.ownerLastName}
+                </h3>
+                <h3 className="product-page__owner-email">
+                  Email: {REALproduct.ownerEmailAddress}
+                </h3>
+                <h3 className="product-page__owner-number">
+                  Phone Number: {REALproduct.ownerPhoneNumber}
+                </h3>
+              </div>
               <button
-                onClick={() => {
-                  handleRemoveItem(REALproduct);
-                }}
+                onClick={() => handleSave(REALproduct)}
+                className="product-page__button"
               >
-                Remove this product
+                Bookmark this product
               </button>
-            </Link>
-          </React.Fragment>
-        ) : null}
-        <button onClick={() => handleSave(REALproduct)}>
-          Bookmark this product
-        </button>
-      </div>
+            </div>
+          </div>
+        )}
+      </section>
     );
   }
 }

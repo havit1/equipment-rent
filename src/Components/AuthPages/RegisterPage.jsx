@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { signUp } from "../../Actions/authActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import "./RegisterPage.scss";
 
 class RegisterPage extends Component {
   state = {
@@ -27,33 +28,47 @@ class RegisterPage extends Component {
     if (uid) return <Redirect to="/" />;
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <h5>Register</h5>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input onChange={this.handleChange} type="email" id="email" />
-          </div>
-          <div>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              onChange={this.handleChange}
-              type="firstName"
-              id="firstName"
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName">Last Name</label>
-            <input onChange={this.handleChange} type="lastName" id="lastName" />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input onChange={this.handleChange} type="password" id="password" />
-          </div>
-          <div>{authError && <p>{authError.message}</p>}</div>
-          <button>Register</button>
-        </form>
-      </div>
+      <section className="register-page">
+        <div className="register-page__form-wrapper">
+          <form
+            className="register-page__form-wrapper-form"
+            onSubmit={this.handleSubmit}
+          >
+            <h2>Register</h2>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input onChange={this.handleChange} type="email" id="email" />
+            </div>
+            <div>
+              <label htmlFor="firstName">First Name</label>
+              <input
+                onChange={this.handleChange}
+                type="firstName"
+                id="firstName"
+              />
+            </div>
+            <div>
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                onChange={this.handleChange}
+                type="lastName"
+                id="lastName"
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                onChange={this.handleChange}
+                type="password"
+                id="password"
+              />
+            </div>
+            <button>Register</button>
+            {authError && <p>{authError.message}</p>}
+          </form>
+        </div>
+        <div className="register-page__image"></div>
+      </section>
     );
   }
 }

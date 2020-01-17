@@ -14,24 +14,28 @@ class ShoppingCart extends cardGenerator {
     const { savedItems } = this.props;
 
     return (
-      <div className="shopping-cart">
-        {savedItems.items.length &&
-          savedItems.items.map(product => (
-            <div key={product.id} className="item-card">
-              <button onClick={() => this.props.onDeleteItem(product.id)}>
-                Delete
-              </button>
-              {this.renderCard(
-                product,
-                product.category.categoryName,
-                product.category.id,
-                true,
-                true,
-                "shopping-cart__element"
-              )}
-            </div>
-          ))}
-      </div>
+      <section className="shopping-cart">
+        <ul className="shopping-cart__items">
+          {savedItems.items.length &&
+            savedItems.items.map(product => (
+              <li key={product.id} className="shopping-cart__items-item">
+                <button
+                  className="shopping-cart__items-item-delete-button"
+                  onClick={() => this.props.onDeleteItem(product.id)}
+                >
+                  Delete
+                </button>
+                {this.renderCard(
+                  product,
+                  product.category.categoryName,
+                  product.category.id,
+                  true,
+                  "product-card"
+                )}
+              </li>
+            ))}
+        </ul>
+      </section>
     );
   }
 }
