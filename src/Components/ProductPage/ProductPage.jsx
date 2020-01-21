@@ -9,6 +9,7 @@ import "./ProductPage.scss";
 
 class ProductPage extends Component {
   render() {
+    document.title = "Product page";
     const { product, match, handleSave, uid, handleRemoveItem } = this.props;
 
     const REALproduct = product

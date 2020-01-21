@@ -12,6 +12,7 @@ import LoginPage from "./Components/AuthPages/LoginPage";
 import LogoutPage from "./Components/AuthPages/LogoutPage";
 import ProtectedRoute from "./Components/Common/protectedRoute";
 import RegisterPage from "./Components/AuthPages/RegisterPage";
+import UserPfofilePage from "./Components/UserProfilePage/UserProfilePage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 
@@ -28,6 +29,7 @@ const App = props => {
           {/* /register is protected route, but inside the component */}
           <Route path="/register" exact component={RegisterPage} />
           <ProtectedRoute path="/logout" exact component={LogoutPage} />
+          <ProtectedRoute path="/profile" exact component={UserPfofilePage} />
           <ProtectedRoute
             path="/item-configuration"
             component={ItemConfigPage}

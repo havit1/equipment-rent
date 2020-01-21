@@ -23,6 +23,8 @@ class LoginPage extends Component {
   };
 
   render() {
+    document.title = "Login";
+
     const { authError, uid } = this.props;
 
     if (uid) return <Redirect to="/" />;
@@ -48,7 +50,11 @@ class LoginPage extends Component {
               />
             </div>
             <button>Login</button>
-            <h3>{authError ? <h1>{authError.message}</h1> : null}</h3>
+            <h3>
+              {authError ? (
+                <h1 className="alert">{authError.message}</h1>
+              ) : null}
+            </h3>
           </form>
         </div>
         <div className="login-page__image"></div>>

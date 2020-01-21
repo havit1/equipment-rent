@@ -26,6 +26,12 @@
 
     form {
       @include form;
+
+      .alert {
+        color: $primary-color;
+        left: 50%;
+        border: none;
+      }
     }
   }
 }

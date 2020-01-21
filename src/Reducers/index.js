@@ -6,6 +6,7 @@ import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
 import addNewProductReducer from "./addNewProductReducer";
 import usersSavedProductsReducer from "./usersSavedProductsReducer";
+import userInfo from "./userProfileReducer";
 
 export default combineReducers({
   saveProductReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   firestore: firestoreReducer,
   firebase: firebaseReducer,
   addNewProductReducer,
-  savedItems: usersSavedProductsReducer
+  savedItems: usersSavedProductsReducer,
+  userInfo
 });

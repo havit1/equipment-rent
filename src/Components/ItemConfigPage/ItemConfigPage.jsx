@@ -60,6 +60,8 @@ class ItemConfigPage extends Form {
   };
 
   render() {
+    document.title = "Item configuration";
+
     const { categories } = this.props;
 
     if (!categories) return <h1>LOADING</h1>;
@@ -72,10 +74,10 @@ class ItemConfigPage extends Form {
           <form className="item-config-page__form" onSubmit={this.handleSubmit}>
             {this.renderInput("name", "Name")}
             {this.renderInput("price", "Price")}
+            {this.renderSelect("category", "Category", categories)}
             {this.renderInput("ownerPhoneNumber", "Phone number")}
             {this.renderInput("ownerEmailAddress", "Email address")}
             {this.renderInput("youtubeLink", "Youtube Link")}
-            {this.renderSelect("category", "Category", categories)}
             {this.renderTextarea("description", "Description")}
             {this.renderButton(
               this.state.buttonInfo.text,

@@ -24,6 +24,8 @@ class RegisterPage extends Component {
   };
 
   render() {
+    document.title = "Register";
+
     const { uid, authError } = this.props;
     if (uid) return <Redirect to="/" />;
 
@@ -64,7 +66,7 @@ class RegisterPage extends Component {
               />
             </div>
             <button>Register</button>
-            {authError && <p>{authError.message}</p>}
+            {authError && <p className="alert">{authError.message}</p>}
           </form>
         </div>
         <div className="register-page__image"></div>

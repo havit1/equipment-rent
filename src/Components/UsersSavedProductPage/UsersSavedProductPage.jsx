@@ -7,6 +7,7 @@ import "./UsersSavedProductPage.scss";
 
 class ShoppingCart extends cardGenerator {
   componentDidMount() {
+    document.title = "Bookmarked items";
     this.props.onLoadSavedItems();
   }
 

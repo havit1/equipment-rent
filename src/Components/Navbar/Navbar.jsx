@@ -19,7 +19,7 @@ const Navbar = props => {
         </li>
         <li className="navbar__links-link">
           <NavLink activeClassName="activeNavLink" to="/saved-products">
-            Shopping cart
+            Bookmarked items
           </NavLink>
         </li>
 

@@ -7,6 +7,7 @@ import "./ProductsList.scss";
 
 class ProductsList extends cardGenerator {
   render() {
+    document.title = "List of products";
     const { productsList, match } = this.props;
 
     return (
