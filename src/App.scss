@@ -1,5 +1,6 @@
 @import "./styles/defaultStyles.scss";
 @import "./styles/variables.scss";
+@import "./styles/mixin.scss";
 
 header {
   position: fixed;
@@ -25,5 +26,12 @@ footer {
 
 .page-container {
   height: 100vh;
-  width: 100vw;
+}
+
+@include media-sm {
+  footer {
+    right: -3rem;
+    bottom: 3rem;
+    transform: rotateZ(-90deg);
+  }
 }

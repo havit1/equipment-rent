@@ -11,6 +11,9 @@ const Navbar = props => {
   return (
     <nav className="navbar">
       {/* <Search history={props.history}></Search> */}
+      <div class="navbar-btn">
+        <span class="navbar-btn__burger"></span>
+      </div>
       <ul className="navbar__links">
         <li className="navbar__links-link">
           <NavLink activeClassName="activeNavLink" exact to="/">

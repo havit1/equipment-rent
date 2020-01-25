@@ -30,7 +30,9 @@ class ProductPage extends Component {
                     className="product-page__link"
                     to={`/item-configuration`}
                   >
-                    <button className="product-page__button">Edit</button>
+                    <button className="product-page__button" disabled>
+                      Edit
+                    </button>
                   </Link>
                   <Link className="product-page__link" to="/">
                     <button

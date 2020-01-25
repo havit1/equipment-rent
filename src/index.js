@@ -51,7 +51,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
       <AuthIsLoaded>
-        <HashRouter basename="/">
+        <HashRouter basename="/equipment-rent/">
           <ToastContainer />
           <App></App>
         </HashRouter>

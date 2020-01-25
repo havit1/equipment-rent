@@ -40,3 +40,28 @@
     }
   }
 }
+
+@include media-lg {
+  .shopping-cart {
+    &__items {
+      padding: 0;
+      grid-template-columns: 1fr 1fr;
+
+      &-item {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@include media-sm {
+  .shopping-cart {
+    &__items {
+      grid-template-columns: 1fr;
+      &-item {
+        position: relative;
+        width: 100%;
+      }
+    }
+  }
+}

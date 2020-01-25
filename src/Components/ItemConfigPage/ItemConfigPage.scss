@@ -3,16 +3,16 @@
 
 .item-config-page {
   height: 100%;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-y: auto;
   background: linear-gradient(#f7bb97, #dd5e89);
+  padding-bottom: 30px;
+  padding-top: 60px;
 
   &__form-wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    height: 100%;
     min-width: 22%;
     animation: bluringReversed 500ms forwards;
 
@@ -21,6 +21,7 @@
 
       select {
         background-color: transparent;
+        position: relative;
       }
 
       textarea {
@@ -40,6 +41,35 @@
         color: $primary-color;
         left: 50%;
         border: none;
+      }
+    }
+  }
+}
+
+@include media-md {
+  .item-config-page {
+    &__form-wrapper {
+      form {
+        .alert {
+          margin: 0;
+          padding: 0;
+          left: 10%;
+          transform: translate(-6%, -141%);
+        }
+      }
+    }
+  }
+}
+@include media-lg {
+  .item-config-page {
+    &__form-wrapper {
+      form {
+        .alert {
+          margin: 0;
+          padding: 0;
+          left: 10%;
+          transform: translate(-6%, -141%);
+        }
       }
     }
   }

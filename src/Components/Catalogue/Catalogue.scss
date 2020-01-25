@@ -2,18 +2,21 @@
 @import "../../styles/mixin.scss";
 
 .catalogue-wrapper {
-  height: 100%;
+  margin-top: 30vh;
 
   .catalogue {
     margin: 0 auto;
-    width: 60vw;
+    width: 90%;
 
     &__elements {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 2rem;
+      gap: 10px;
+      padding: 0;
 
       &-element {
+        // width: 30%;
+        // min-width: 300px;
         position: relative;
         overflow: hidden;
         cursor: pointer;
@@ -152,5 +155,37 @@
   }
   100% {
     transform: translateY(-100%);
+  }
+}
+
+@include media-lg {
+  .catalogue-wrapper {
+    margin-top: 10vh;
+    .catalogue {
+      width: 40%;
+      &__elements {
+        grid-template-columns: 1fr;
+        padding: 0;
+        &-element {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+@include media-md {
+  .catalogue-wrapper {
+    margin-top: 10vh;
+    .catalogue {
+      width: 60%;
+      &__elements {
+        grid-template-columns: 1fr;
+        padding: 0;
+        &-element {
+          margin-bottom: 10px;
+        }
+      }
+    }
   }
 }

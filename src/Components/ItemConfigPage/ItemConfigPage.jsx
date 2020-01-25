@@ -66,8 +66,6 @@ class ItemConfigPage extends Form {
 
     if (!categories) return <h1>LOADING</h1>;
 
-    console.log(this.state.data);
-
     return (
       <section className="item-config-page">
         <div className="item-config-page__form-wrapper">
