@@ -189,3 +189,12 @@
     }
   }
 }
+
+@include media-sm {
+  .catalogue-wrapper {
+    margin-top: 10vh;
+    .catalogue {
+      width: 100%;
+    }
+  }
+}

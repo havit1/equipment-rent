@@ -3,6 +3,7 @@
 .login-page {
   height: 100vh;
   position: relative;
+  z-index: 0;
   overflow-y: auto;
 
   &__image {
@@ -51,5 +52,21 @@
   }
   100% {
     filter: blur(0px);
+  }
+}
+
+@include media-lg {
+  .login-page {
+    &__form-wrapper {
+      min-width: 50%;
+    }
+  }
+}
+
+@include media-sm {
+  .login-page {
+    &__form-wrapper {
+      min-width: 90%;
+    }
   }
 }

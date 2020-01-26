@@ -8,6 +8,10 @@ $border-size: 1px;
   left: 0;
   width: 100vw;
 
+  &-btn {
+    display: none;
+  }
+
   &__links {
     display: flex;
     justify-content: flex-start;
@@ -32,5 +36,115 @@ $border-size: 1px;
         color: $secondary-color;
       }
     }
+  }
+}
+
+@include media-sm {
+  .navbar {
+    visibility: hidden;
+    position: fixed;
+
+    &.open {
+      visibility: visible;
+    }
+
+    &__links {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      background-color: $primary-color;
+      list-style-type: none;
+      padding-right: 1rem;
+      transform: translateY(-100%);
+      @include transition-ease();
+
+      &.open {
+        transform: translateY(0);
+      }
+
+      &-link {
+        transform: translateX(100vw);
+        @include transition-ease;
+
+        &.open {
+          transform: translateX(0);
+        }
+
+        a {
+          display: inline-block;
+          color: white;
+          font-size: 2rem;
+          text-transform: uppercase;
+          padding: 2rem 0;
+          font-weight: 300;
+          @include transition-ease;
+        }
+      }
+    }
+
+    &-btn {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      right: 1rem;
+      top: 1rem;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+      @include transition-ease;
+
+      &__burger {
+        position: absolute;
+        right: 0;
+        top: 0.5rem;
+        width: 28px;
+        height: 3px;
+        background: $secondary-color;
+        @include transition-ease;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: -8px;
+          width: 28px;
+          height: 3px;
+          background-color: $secondary-color;
+          @include transition-ease;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 8px;
+          width: 20px;
+          height: 3px;
+          background-color: $secondary-color;
+          @include transition-ease;
+        }
+
+        &.open {
+          transform: rotate(720deg);
+          background: transparent;
+
+          &::before {
+            transform: rotate(45deg) translate((5px, 8px));
+          }
+
+          &::after {
+            width: 28px;
+            transform: rotate(-45deg) translate(3px, -7px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@for $i from 1 through 10 {
+  .navbar__links-link:nth-child(#{$i}) {
+    transition-delay: ($i * 0.1s) + 0.15s;
   }
 }
