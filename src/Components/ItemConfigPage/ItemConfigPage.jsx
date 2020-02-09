@@ -34,7 +34,12 @@ class ItemConfigPage extends Form {
       .label("Price"),
     description: Joi.label("Description"),
     id: Joi.label("Id"),
-    youtubeLink: Joi.string().label("Youtube Link"),
+    youtubeLink: Joi.string()
+      .regex(/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/)
+      .label("Youtube Link")
+      .error(() => {
+        return { message: "Please use YOUTUBE link" };
+      }),
     ownerPhoneNumber: Joi.number()
       .required()
       .label("Phone number"),

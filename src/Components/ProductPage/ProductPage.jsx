@@ -10,21 +10,17 @@ import "./ProductPage.scss";
 class ProductPage extends Component {
   render() {
     document.title = "Product page";
-    const { product, match, handleSave, uid, handleRemoveItem } = this.props;
-
-    const REALproduct = product
-      ? product.find(product => product.id === match.params.productId)
-      : null;
-    /* ^^^^ THIS HAS TO BA CHANGED ^^^^ */
+    const { product, handleSave, uid, handleRemoveItem } = this.props;
 
     return (
       <section className="product-page">
-        {REALproduct && (
+        {product && (
           <div className="product-page__wrapper">
             <div className="product-page__image">Cool image</div>
+
             <div className="product-page__info">
-              <h1 className="product-page__info-name">{REALproduct.name}</h1>
-              {uid === REALproduct.ownerId ? (
+              <h1 className="product-page__info-name">{product[0].name}</h1>
+              {uid === product[0].ownerId ? (
                 <div className="product-page__owner-options">
                   <Link
                     className="product-page__link"
@@ -38,7 +34,7 @@ class ProductPage extends Component {
                     <button
                       className="product-page__button"
                       onClick={() => {
-                        handleRemoveItem(REALproduct);
+                        handleRemoveItem(product[0]);
                       }}
                     >
                       Remove this product
@@ -46,24 +42,32 @@ class ProductPage extends Component {
                   </Link>
                 </div>
               ) : null}
-              <h3 className="product-page__info-price">{REALproduct.price}$</h3>
+              <h3 className="product-page__info-price">{product[0].price}$</h3>
               <p className="product-page__info-description">
-                {REALproduct.description}
+                {product[0].description}
               </p>
               <div className="product-page__owner">
                 <h3 className="product-page__owner-name">
-                  Owner: {REALproduct.ownerFirstName}{" "}
-                  {REALproduct.ownerLastName}
+                  Owner: {product[0].ownerFirstName} {product[0].ownerLastName}
                 </h3>
                 <h3 className="product-page__owner-email">
-                  Email: {REALproduct.ownerEmailAddress}
+                  Email: {product[0].ownerEmailAddress}
                 </h3>
                 <h3 className="product-page__owner-number">
-                  Phone Number: {REALproduct.ownerPhoneNumber}
+                  Phone Number: {product[0].ownerPhoneNumber}
                 </h3>
               </div>
+              {product[0].youtubeLink && (
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`//www.youtube.com/embed/${product[0].youtubeLink}`}
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              )}
               <button
-                onClick={() => handleSave(REALproduct)}
+                onClick={() => handleSave(product[0])}
                 className="product-page__button"
               >
                 Bookmark this product
@@ -97,9 +101,11 @@ const mapDispatchToProps = dispatch => {
 
 export default compose(
   firestoreConnect(props => [
-    { collection: `categories/${props.match.params.categoryId}/items` }
+    {
+      collection: `categories/${props.match.params.categoryId}/items`,
+      doc: `${props.match.params.productId}`
+    }
   ]),
-  /* ^^^^ THIS HAS TO BA CHANGED ^^^^ */
 
   connect(mapStateToProps, mapDispatchToProps)
 )(ProductPage);

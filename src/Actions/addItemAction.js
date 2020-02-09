@@ -3,6 +3,9 @@ export const addItemAction = newItem => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const ownerId = getState().firebase.auth.uid;
+    const storage = getFirebase().storage();
+
+    newItem.youtubeLink = getId(newItem.youtubeLink);
 
     firestore
       .collection(`categories/${newItem.category.id}/items`)
@@ -21,3 +24,10 @@ export const addItemAction = newItem => {
       });
   };
 };
+
+function getId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+
+  return match && match[2].length === 11 ? match[2] : null;
+}
