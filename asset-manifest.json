@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/equipment-rent/static/css/main.7f7c2394.chunk.css",
-    "main.js": "/equipment-rent/static/js/main.62fb96d0.chunk.js",
-    "main.js.map": "/equipment-rent/static/js/main.62fb96d0.chunk.js.map",
+    "main.js": "/equipment-rent/static/js/main.e729a328.chunk.js",
+    "main.js.map": "/equipment-rent/static/js/main.e729a328.chunk.js.map",
     "runtime-main.js": "/equipment-rent/static/js/runtime-main.248a4334.js",
     "runtime-main.js.map": "/equipment-rent/static/js/runtime-main.248a4334.js.map",
     "static/css/2.f42e59c9.chunk.css": "/equipment-rent/static/css/2.f42e59c9.chunk.css",
     "static/js/2.37461ca0.chunk.js": "/equipment-rent/static/js/2.37461ca0.chunk.js",
     "static/js/2.37461ca0.chunk.js.map": "/equipment-rent/static/js/2.37461ca0.chunk.js.map",
     "index.html": "/equipment-rent/index.html",
-    "precache-manifest.5559617870db77c7f28bbfe8c9dc351e.js": "/equipment-rent/precache-manifest.5559617870db77c7f28bbfe8c9dc351e.js",
+    "precache-manifest.bde52ba2b9d43a01fcc4ee23e91ffbef.js": "/equipment-rent/precache-manifest.bde52ba2b9d43a01fcc4ee23e91ffbef.js",
     "service-worker.js": "/equipment-rent/service-worker.js",
     "static/css/2.f42e59c9.chunk.css.map": "/equipment-rent/static/css/2.f42e59c9.chunk.css.map",
     "static/css/main.7f7c2394.chunk.css.map": "/equipment-rent/static/css/main.7f7c2394.chunk.css.map",
@@ -24,6 +24,6 @@
     "static/css/2.f42e59c9.chunk.css",
     "static/js/2.37461ca0.chunk.js",
     "static/css/main.7f7c2394.chunk.css",
-    "static/js/main.62fb96d0.chunk.js"
+    "static/js/main.e729a328.chunk.js"
   ]
 }
