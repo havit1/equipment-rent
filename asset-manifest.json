@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/equipment-rent/static/css/main.46e4ebf6.chunk.css",
-    "main.js": "/equipment-rent/static/js/main.7a7f64e1.chunk.js",
-    "main.js.map": "/equipment-rent/static/js/main.7a7f64e1.chunk.js.map",
-    "runtime-main.js": "/equipment-rent/static/js/runtime-main.33d7c7ca.js",
-    "runtime-main.js.map": "/equipment-rent/static/js/runtime-main.33d7c7ca.js.map",
-    "static/css/2.5dbdccff.chunk.css": "/equipment-rent/static/css/2.5dbdccff.chunk.css",
-    "static/js/2.111eef95.chunk.js": "/equipment-rent/static/js/2.111eef95.chunk.js",
-    "static/js/2.111eef95.chunk.js.map": "/equipment-rent/static/js/2.111eef95.chunk.js.map",
+    "main.css": "/equipment-rent/static/css/main.7f7c2394.chunk.css",
+    "main.js": "/equipment-rent/static/js/main.e31c26a1.chunk.js",
+    "main.js.map": "/equipment-rent/static/js/main.e31c26a1.chunk.js.map",
+    "runtime-main.js": "/equipment-rent/static/js/runtime-main.248a4334.js",
+    "runtime-main.js.map": "/equipment-rent/static/js/runtime-main.248a4334.js.map",
+    "static/css/2.f42e59c9.chunk.css": "/equipment-rent/static/css/2.f42e59c9.chunk.css",
+    "static/js/2.1a869892.chunk.js": "/equipment-rent/static/js/2.1a869892.chunk.js",
+    "static/js/2.1a869892.chunk.js.map": "/equipment-rent/static/js/2.1a869892.chunk.js.map",
     "index.html": "/equipment-rent/index.html",
-    "precache-manifest.53fcf7ecd5dbbcefac118bc5e641eaa7.js": "/equipment-rent/precache-manifest.53fcf7ecd5dbbcefac118bc5e641eaa7.js",
+    "precache-manifest.1afdbfe199b185a88d3115722f14880e.js": "/equipment-rent/precache-manifest.1afdbfe199b185a88d3115722f14880e.js",
     "service-worker.js": "/equipment-rent/service-worker.js",
-    "static/css/2.5dbdccff.chunk.css.map": "/equipment-rent/static/css/2.5dbdccff.chunk.css.map",
-    "static/css/main.46e4ebf6.chunk.css.map": "/equipment-rent/static/css/main.46e4ebf6.chunk.css.map",
-    "static/js/2.111eef95.chunk.js.LICENSE": "/equipment-rent/static/js/2.111eef95.chunk.js.LICENSE",
+    "static/css/2.f42e59c9.chunk.css.map": "/equipment-rent/static/css/2.f42e59c9.chunk.css.map",
+    "static/css/main.7f7c2394.chunk.css.map": "/equipment-rent/static/css/main.7f7c2394.chunk.css.map",
+    "static/js/2.1a869892.chunk.js.LICENSE.txt": "/equipment-rent/static/js/2.1a869892.chunk.js.LICENSE.txt",
     "static/media/ProductsList.scss": "/equipment-rent/static/media/jakob-owens-LCiZmVUaEf0-unsplash.4554a6a7.jpg",
     "static/media/RegisterPage.scss": "/equipment-rent/static/media/PhotobyAlexanderDummeronUnsplash.cffd4170.jpg",
     "static/media/Catalogue.scss": "/equipment-rent/static/media/microphones.59254c8a.jpg",
     "static/media/App.scss": "/equipment-rent/static/media/sf-pro-display_semibold.a1657f43.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.33d7c7ca.js",
-    "static/css/2.5dbdccff.chunk.css",
-    "static/js/2.111eef95.chunk.js",
-    "static/css/main.46e4ebf6.chunk.css",
-    "static/js/main.7a7f64e1.chunk.js"
+    "static/js/runtime-main.248a4334.js",
+    "static/css/2.f42e59c9.chunk.css",
+    "static/js/2.1a869892.chunk.js",
+    "static/css/main.7f7c2394.chunk.css",
+    "static/js/main.e31c26a1.chunk.js"
   ]
 }
