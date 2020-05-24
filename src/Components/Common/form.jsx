@@ -3,6 +3,7 @@ import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./select";
 import Textarea from "./textarea";
+import FileField from "./fileField";
 
 class Form extends Component {
   state = {
@@ -40,6 +41,7 @@ class Form extends Component {
 
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
+
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
@@ -87,11 +89,25 @@ class Form extends Component {
     );
   }
 
-  renderTextarea(name, label, type = "text") {
+  renderTextarea(name, label) {
     const { data, errors } = this.state;
 
     return (
       <Textarea
+        name={name}
+        value={data[name]}
+        label={label}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderFileField(name, label, type = "file") {
+    const { data, errors } = this.state;
+
+    return (
+      <FileField
         type={type}
         name={name}
         value={data[name]}

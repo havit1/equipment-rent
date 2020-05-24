@@ -46,7 +46,8 @@ class ItemConfigPage extends Form {
     ownerEmailAddress: Joi.string()
       .email()
       .required()
-      .label("Email address")
+      .label("Email address"),
+    fileField: Joi.string()
   };
 
   onSubmit = () => {
@@ -82,6 +83,7 @@ class ItemConfigPage extends Form {
             {this.renderInput("ownerEmailAddress", "Email address")}
             {this.renderInput("youtubeLink", "Youtube Link")}
             {this.renderTextarea("description", "Description")}
+            {this.renderFileField("fileField", "Image")}
             {this.renderButton(
               this.state.buttonInfo.text,
               this.state.buttonInfo.class

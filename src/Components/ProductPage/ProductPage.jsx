@@ -59,6 +59,7 @@ class ProductPage extends Component {
               </div>
               {product[0].youtubeLink && (
                 <iframe
+                  title="youtubeVideo"
                   width="560"
                   height="315"
                   src={`//www.youtube.com/embed/${product[0].youtubeLink}`}

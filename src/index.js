@@ -5,8 +5,8 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as HashRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider, useSelector } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 import {
   getFirestore,
   reduxFirestore,
