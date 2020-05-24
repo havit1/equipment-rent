@@ -14,7 +14,8 @@ class cardGenerator extends Component {
         to={`/${categoryId}/${categoryName}/${product.id}`}
         className={`${className}`}
       >
-        {withImage ? <img src="" alt="Something cool"></img> : null}
+        <span style={{margin: '0 auto', color: 'white'}}>Image display is still in development</span>
+        {/* {withImage ? <img src="" alt="Photo"></img> : null} */}
         <div>
           <h3>{product.name}</h3>
           <p>{product.description}</p>

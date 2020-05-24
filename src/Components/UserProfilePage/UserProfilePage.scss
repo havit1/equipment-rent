@@ -1,5 +1,5 @@
-@import "../../styles/mixin.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
 
 .user-profile {
   padding-top: 20vh;
@@ -7,6 +7,18 @@
   width: 100%;
   margin: 0;
   background: linear-gradient(#dd5e89, #f7bb97);
+
+  &__title {
+    color: $primary-color;
+    border-color: $primary-color;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 5em;
+    letter-spacing: -2px;
+    border-bottom: 2px solid black;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
 
   &__items {
     margin: 0 auto;
@@ -26,7 +38,14 @@
 
       &-button {
         position: absolute;
-        float: right;
+        right: 3px;
+        top: 3px;
+        background-color: $secondary-color; /* Blue background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+        cursor: pointer; /* Mouse pointer on hover */
       }
 
       .product-card {

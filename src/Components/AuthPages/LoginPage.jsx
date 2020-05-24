@@ -30,6 +30,17 @@ class LoginPage extends Component {
     if (uid) return <Redirect to="/" />;
 
     return (
+      <>
+      <div style={{
+        position: "absolute",
+        'z-index': '1',
+        "background-color": 'white',
+        bottom: '20px',
+        left: "20px"
+      }}>
+        <h2>Small side note</h2>
+        <p>You can use "test@test.com" as a email and "test1234" as a password to test this app</p>
+      </div>
       <section className="login-page">
         <div className="login-page__form-wrapper">
           <form
@@ -50,15 +61,14 @@ class LoginPage extends Component {
               />
             </div>
             <button>Login</button>
-            <h3>
               {authError ? (
                 <h1 className="alert">{authError.message}</h1>
               ) : null}
-            </h3>
           </form>
         </div>
         <div className="login-page__image"></div>>
       </section>
+      </>
     );
   }
 }

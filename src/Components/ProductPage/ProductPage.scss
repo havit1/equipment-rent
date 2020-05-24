@@ -1,5 +1,5 @@
-@import "../../styles/mixin.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/mixin.scss';
+@import '../../styles/variables.scss';
 
 .product-page {
   padding-top: 15vh;
@@ -11,8 +11,8 @@
     width: 80%;
     padding: 30px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    justify-content: center;
   }
 
   &__image {
@@ -47,7 +47,7 @@
     }
 
     &-options {
-      margin: 20px;
+      // margin: 20px;
 
       a {
         margin-right: 10px;
@@ -57,6 +57,7 @@
 
   &__button {
     @include button;
-    width: 20%;
+    margin-top: 20px;
+    // width: 20%;
   }
 }

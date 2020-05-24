@@ -16,15 +16,15 @@ class ShoppingCart extends cardGenerator {
 
     return (
       <section className="shopping-cart">
+         {savedItems.items.length > 0 ?
         <ul className="shopping-cart__items">
-          {savedItems.items.length &&
-            savedItems.items.map(product => (
+            {savedItems.items.map(product => (
               <li key={product.id} className="shopping-cart__items-item">
                 <button
                   className="shopping-cart__items-item-delete-button"
                   onClick={() => this.props.onDeleteItem(product.id)}
                 >
-                  Delete
+                  Remove from bookmarks
                 </button>
                 {this.renderCard(
                   product,
@@ -36,6 +36,7 @@ class ShoppingCart extends cardGenerator {
               </li>
             ))}
         </ul>
+       : <h1 className="shopping-cart__empty-text">Nothing is here</h1>}
       </section>
     );
   }

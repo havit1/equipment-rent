@@ -16,20 +16,18 @@ class ProductPage extends Component {
       <section className="product-page">
         {product && (
           <div className="product-page__wrapper">
-            <div className="product-page__image">Cool image</div>
-
             <div className="product-page__info">
               <h1 className="product-page__info-name">{product[0].name}</h1>
               {uid === product[0].ownerId ? (
                 <div className="product-page__owner-options">
-                  <Link
+                  {/* <Link
                     className="product-page__link"
                     to={`/item-configuration`}
                   >
                     <button className="product-page__button" disabled>
                       Edit
                     </button>
-                  </Link>
+                  </Link> */}
                   <Link className="product-page__link" to="/">
                     <button
                       className="product-page__button"

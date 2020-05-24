@@ -17,6 +17,7 @@ class UserProfilePage extends cardGenerator {
 
     return (
       <section className="user-profile">
+      <h1 className="user-profile__title">Your products:</h1>
         <ul className="user-profile__items">
           {userItems.items &&
             userItems.items.map(item => (
@@ -34,7 +35,7 @@ class UserProfilePage extends cardGenerator {
                     handleRemoveItem(item);
                   }}
                 >
-                  Remove this product
+                  Remove
                 </button>
               </li>
             ))}

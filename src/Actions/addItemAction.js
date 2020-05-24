@@ -3,7 +3,6 @@ export const addItemAction = newItem => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const ownerId = getState().firebase.auth.uid;
-    const storage = getFirebase().storage();
 
     newItem.youtubeLink = getId(newItem.youtubeLink);
 
