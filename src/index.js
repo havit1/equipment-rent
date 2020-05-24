@@ -2,7 +2,7 @@ import App from "./App";
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider, useSelector } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -51,7 +51,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
       <AuthIsLoaded>
-        <HashRouter basename="/equipment-rent/">
+        <HashRouter basename="/">
           <ToastContainer />
           <App></App>
         </HashRouter>
