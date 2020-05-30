@@ -11,8 +11,11 @@ export const addItemAction = (newItem) => {
     storage
       .child(`images/${ownerId}_${new Date().getTime()}`)
       .put(newItem.image)
-      .then((snapshot) => {
-        newItem.image = snapshot.metadata.downloadURLs[0];
+      .then(async (snapshot) => {
+        const downloadUrl = await snapshot.ref.getDownloadURL();
+        console.log(downloadUrl);
+        newItem.image = snapshot.metadata.fullPath;
+        newItem.displayImageUrl = downloadUrl;
         firestore
           .collection(`categories/${newItem.category.id}/items`)
           .add({
