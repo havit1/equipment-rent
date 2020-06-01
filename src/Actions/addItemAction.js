@@ -1,4 +1,6 @@
-export const addItemAction = newItem => {
+import { storage } from '../config/fbConfig';
+
+export const addItemAction = (newItem) => {
   return (dispath, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -6,20 +8,29 @@ export const addItemAction = newItem => {
 
     newItem.youtubeLink = getId(newItem.youtubeLink);
 
-    firestore
-      .collection(`categories/${newItem.category.id}/items`)
-      .add({
-        ...newItem,
-        ownerFirstName: profile.firstName,
-        ownerLastName: profile.lastName,
-        ownerId,
-        createdAt: new Date()
-      })
-      .then(() => {
-        dispatchEvent({ type: "ADD_NEW_PRODUCT", payload: newItem });
-      })
-      .catch(err => {
-        dispath({ type: "ADD_NEW_PRODUCT_ERROR", payload: err });
+    storage
+      .child(`images/${ownerId}_${new Date().getTime()}`)
+      .put(newItem.image)
+      .then(async (snapshot) => {
+        const downloadUrl = await snapshot.ref.getDownloadURL();
+        console.log(downloadUrl);
+        newItem.image = snapshot.metadata.fullPath;
+        newItem.displayImageUrl = downloadUrl;
+        firestore
+          .collection(`categories/${newItem.category.id}/items`)
+          .add({
+            ...newItem,
+            ownerFirstName: profile.firstName,
+            ownerLastName: profile.lastName,
+            ownerId,
+            createdAt: new Date(),
+          })
+          .then(() => {
+            dispatchEvent({ type: 'ADD_NEW_PRODUCT', payload: newItem });
+          })
+          .catch((err) => {
+            dispath({ type: 'ADD_NEW_PRODUCT_ERROR', payload: err });
+          });
       });
   };
 };

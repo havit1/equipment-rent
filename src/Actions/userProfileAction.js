@@ -1,9 +1,9 @@
 const fetchProfileInfoRequest = () => {
-  return { type: "FETCH_PROFILE_INFO_REQUEST" };
+  return { type: 'FETCH_PROFILE_INFO_REQUEST' };
 };
 
-const fetchProfileInfoSuccess = data => {
-  return { type: "FETCH_PROFILE_INFO_SUCCESS", payload: data };
+const fetchProfileInfoSuccess = (data) => {
+  return { type: 'FETCH_PROFILE_INFO_SUCCESS', payload: data };
 };
 
 // const fetchProfileInfoFailure = err => {
@@ -17,10 +17,10 @@ export const fetchProfileInfo = () => {
     const userId = getState().firebase.auth.uid;
 
     firestore
-      .collectionGroup("items")
-      .where("ownerId", "==", userId)
-      .onSnapshot(response => {
-        const items = response.docs.map(doc => {
+      .collectionGroup('items')
+      .where('ownerId', '==', userId)
+      .onSnapshot((response) => {
+        const items = response.docs.map((doc) => {
           const data = doc.data();
           data.id = doc.id;
           return data;

@@ -1,13 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import cardGenerator from "../Common/cardGenerator";
-import { fetchSavedItems } from "../../Actions/usersSavedProductsAction";
-import { fetchDeleteItem } from "../../Actions/saveDeleteProductAction";
-import "./UsersSavedProductPage.scss";
+import React from 'react';
+import { connect } from 'react-redux';
+import cardGenerator from '../Common/cardGenerator';
+import { fetchSavedItems } from '../../Actions/usersSavedProductsAction';
+import { fetchDeleteItem } from '../../Actions/saveDeleteProductAction';
+import './UsersSavedProductPage.scss';
 
 class ShoppingCart extends cardGenerator {
   componentDidMount() {
-    document.title = "Bookmarked items";
+    document.title = 'Bookmarked items';
     this.props.onLoadSavedItems();
   }
 
@@ -15,28 +15,19 @@ class ShoppingCart extends cardGenerator {
     const { savedItems } = this.props;
 
     return (
-      <section className="shopping-cart">
-         {savedItems.items.length > 0 ?
-        <ul className="shopping-cart__items">
-            {savedItems.items.map(product => (
-              <li key={product.id} className="shopping-cart__items-item">
+      <section className='shopping-cart home-page-background'>
+        <ul className='shopping-cart__items'>
+          {savedItems.items.length > 0 &&
+            savedItems.items.map((product) => (
+              <li key={product.id} className='shopping-cart__items-item'>
                 <button
-                  className="shopping-cart__items-item-delete-button"
+                  className='shopping-cart__items-item-delete-button'
                   onClick={() => this.props.onDeleteItem(product.id)}
-                >
-                  Remove from bookmarks
-                </button>
-                {this.renderCard(
-                  product,
-                  product.category.categoryName,
-                  product.category.id,
-                  true,
-                  "product-card"
-                )}
+                ></button>
+                {this.renderCard(product, product.category.categoryName, product.category.id, true, 'product-card')}
               </li>
             ))}
         </ul>
-       : <h1 className="shopping-cart__empty-text">Nothing is here</h1>}
       </section>
     );
   }
@@ -44,14 +35,14 @@ class ShoppingCart extends cardGenerator {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    savedItems: state.savedItems
+    savedItems: state.savedItems,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoadSavedItems: () => dispatch(fetchSavedItems()),
-    onDeleteItem: id => dispatch(fetchDeleteItem(id))
+    onDeleteItem: (id) => dispatch(fetchDeleteItem(id)),
   };
 };
 

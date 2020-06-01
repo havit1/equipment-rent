@@ -1,16 +1,16 @@
-const initialState = { err: "", loading: false, items: [] };
+const initialState = { err: '', loading: false, items: [] };
 
 export default function userInfo(state = initialState, action) {
   switch (action.type) {
-    case "FETCH_PROFILE_INFO_REQUEST":
+    case 'FETCH_PROFILE_INFO_REQUEST':
       return { ...state, loading: true };
-    case "FETCH_PROFILE_INFO_SUCCESS":
+    case 'FETCH_PROFILE_INFO_SUCCESS':
       return { ...state, loading: false, items: action.payload };
-    case "FETCH_PROFILE_INFO_FAILURE":
+    case 'FETCH_PROFILE_INFO_FAILURE':
       return {
         ...state,
         loading: false,
-        err: action.payload
+        err: action.payload,
       };
     default:
       return state;

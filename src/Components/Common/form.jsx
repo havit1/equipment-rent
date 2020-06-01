@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import Joi from "joi-browser";
-import Input from "./input";
-import Select from "./select";
-import Textarea from "./textarea";
+import React, { Component } from 'react';
+import Joi from 'joi-browser';
+import Input from './input';
+import Select from './select';
+import Textarea from './textarea';
+import FileField from './fileField';
 
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -28,9 +29,8 @@ class Form extends Component {
     return error ? error.details[0].message : null;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
@@ -38,8 +38,23 @@ class Form extends Component {
     this.onSubmit();
   };
 
+  handleImageChange = (event) => {
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    const data = { ...this.state.data };
+    // data.image = { file: file, fileUrl: reader.result };
+    data.image = file;
+    reader.onloadend = () => {
+      this.setState((state) => {
+        return { errors: state.errors, data: data };
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
+
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
@@ -51,11 +66,7 @@ class Form extends Component {
   };
 
   renderButton(label, className) {
-    return (
-      <button disabled={this.validate()} className={className}>
-        {this.validate() ? "Please, add more info" : `${label}`}
-      </button>
-    );
+    return <button className={className}>{`${label}`}</button>;
   }
 
   renderSelect(name, label, options) {
@@ -72,7 +83,7 @@ class Form extends Component {
     );
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, type = 'text') {
     const { data, errors } = this.state;
 
     return (
@@ -87,19 +98,16 @@ class Form extends Component {
     );
   }
 
-  renderTextarea(name, label, type = "text") {
+  renderTextarea(name, label) {
     const { data, errors } = this.state;
 
-    return (
-      <Textarea
-        type={type}
-        name={name}
-        value={data[name]}
-        label={label}
-        onChange={this.handleChange}
-        error={errors[name]}
-      />
-    );
+    return <Textarea name={name} value={data[name]} label={label} onChange={this.handleChange} error={errors[name]} />;
+  }
+
+  renderFileField(name, label, type = 'file') {
+    const { errors } = this.state;
+
+    return <FileField type={type} name={name} label={label} onChange={this.handleImageChange} error={errors[name]} />;
   }
 }
 
