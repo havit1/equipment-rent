@@ -1,13 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import cardGenerator from "../Common/cardGenerator";
-import { fetchSavedItems } from "../../Actions/usersSavedProductsAction";
-import { fetchDeleteItem } from "../../Actions/saveDeleteProductAction";
-import "./UsersSavedProductPage.scss";
+import React from 'react';
+import { connect } from 'react-redux';
+import cardGenerator from '../Common/cardGenerator';
+import { fetchSavedItems } from '../../Actions/usersSavedProductsAction';
+import { fetchDeleteItem } from '../../Actions/saveDeleteProductAction';
+import './UsersSavedProductPage.scss';
 
 class ShoppingCart extends cardGenerator {
   componentDidMount() {
-    document.title = "Bookmarked items";
+    document.title = 'Bookmarked items';
     this.props.onLoadSavedItems();
   }
 
@@ -15,24 +15,18 @@ class ShoppingCart extends cardGenerator {
     const { savedItems } = this.props;
 
     return (
-      <section className="shopping-cart">
-        <ul className="shopping-cart__items">
+      <section className='shopping-cart'>
+        <ul className='shopping-cart__items'>
           {savedItems.items.length &&
-            savedItems.items.map(product => (
-              <li key={product.id} className="shopping-cart__items-item">
+            savedItems.items.map((product) => (
+              <li key={product.id} className='shopping-cart__items-item'>
                 <button
-                  className="shopping-cart__items-item-delete-button"
+                  className='shopping-cart__items-item-delete-button'
                   onClick={() => this.props.onDeleteItem(product.id)}
                 >
                   Delete
                 </button>
-                {this.renderCard(
-                  product,
-                  product.category.categoryName,
-                  product.category.id,
-                  true,
-                  "product-card"
-                )}
+                {this.renderCard(product, product.category.categoryName, product.category.id, true, 'product-card')}
               </li>
             ))}
         </ul>
@@ -43,14 +37,14 @@ class ShoppingCart extends cardGenerator {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    savedItems: state.savedItems
+    savedItems: state.savedItems,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onLoadSavedItems: () => dispatch(fetchSavedItems()),
-    onDeleteItem: id => dispatch(fetchDeleteItem(id))
+    onDeleteItem: (id) => dispatch(fetchDeleteItem(id)),
   };
 };
 

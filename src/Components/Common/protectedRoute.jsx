@@ -1,20 +1,20 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({ path, component: Component, render, ...rest }) => {
-  const auth = useSelector(state => state.firebase.auth);
+  const auth = useSelector((state) => state.firebase.auth);
 
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props) => {
         if (!auth.uid)
           return (
             <Redirect
               to={{
-                pathname: "/login",
-                state: { from: props.location }
+                pathname: '/login',
+                state: { from: props.location },
               }}
             />
           );

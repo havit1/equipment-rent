@@ -1,13 +1,13 @@
 export const fetchSavedItemsRequest = () => {
-  return { type: "FETCH_SAVED_ITEMS_REQUEST" };
+  return { type: 'FETCH_SAVED_ITEMS_REQUEST' };
 };
 
-export const fetchSavedItemsSuccess = items => {
-  return { type: "FETCH_SAVED_ITEMS_SUCCESS", payload: items };
+export const fetchSavedItemsSuccess = (items) => {
+  return { type: 'FETCH_SAVED_ITEMS_SUCCESS', payload: items };
 };
 
-export const fetchSavedItemsFailure = err => {
-  return { type: "FETCH_SAVED_ITEMS_FAILURE", payload: err };
+export const fetchSavedItemsFailure = (err) => {
+  return { type: 'FETCH_SAVED_ITEMS_FAILURE', payload: err };
 };
 
 export const fetchSavedItems = () => {
@@ -20,10 +20,10 @@ export const fetchSavedItems = () => {
     firestore
       .collection(`users/${userId}/savedProducts`)
       .get()
-      .then(response => {
-        const items = response.docs.map(doc => doc.data());
+      .then((response) => {
+        const items = response.docs.map((doc) => doc.data());
         dispatch(fetchSavedItemsSuccess(items));
       })
-      .catch(err => dispatch(fetchSavedItemsFailure(err)));
+      .catch((err) => dispatch(fetchSavedItemsFailure(err)));
   };
 };

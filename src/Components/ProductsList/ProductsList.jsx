@@ -7,8 +7,6 @@ import { firestoreConnect } from 'react-redux-firebase';
 
 import cardGenerator from '../Common/cardGenerator';
 
-import { storage } from '../../config/fbConfig';
-
 import './ProductsList.scss';
 
 class ProductsList extends cardGenerator {

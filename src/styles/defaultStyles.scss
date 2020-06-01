@@ -1,5 +1,5 @@
-@import "./fonst.scss";
-@import "./variables.scss";
+@import './fonst.scss';
+@import './variables.scss';
 
 * {
   box-sizing: border-box;
@@ -20,7 +20,7 @@ html {
   -webkit-font-smoothing: antialiased;
   font-weight: 500;
   font-size: 15px;
-  font-family: "SF Pro display", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'SF Pro display', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {

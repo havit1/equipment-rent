@@ -1,45 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useFirestoreConnect } from "react-redux-firebase";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useFirestoreConnect } from 'react-redux-firebase';
 
-import "./Catalogue.scss";
+import './Catalogue.scss';
 
 const Catalogue = () => {
-  useFirestoreConnect("categories");
+  useFirestoreConnect('categories');
 
-  const categories = useSelector(state => state.firestore);
+  const categories = useSelector((state) => state.firestore);
 
   return (
-    <section className="catalogue-wrapper">
+    <section className='catalogue-wrapper'>
       {categories.status.requesting.categories ? (
-        <h2 className="spinner">Loading</h2>
+        <h2 className='spinner'>Loading</h2>
       ) : categories.errors.byQuery.length > 0 ? (
-        <h2 className="error">{categories.error}</h2>
+        <h2 className='error'>{categories.error}</h2>
       ) : (
-        <div className="catalogue">
-          <ol className="catalogue__elements">
+        <div className='catalogue'>
+          <ol className='catalogue__elements'>
             {categories.ordered.categories &&
-              categories.ordered.categories.map(category => (
-                <li className="catalogue__elements-element" key={category.id}>
+              categories.ordered.categories.map((category) => (
+                <li className='catalogue__elements-element' key={category.id}>
                   <span></span>
                   <span></span>
                   <span></span>
                   <span></span>
-                  <Link
-                    to={`/${category.categoryName.toLowerCase()}/${
-                      category.id
-                    }`}
-                  >
+                  <Link to={`/${category.categoryName.toLowerCase()}/${category.id}`}>
                     <div
                       // style={{
                       //   backgroundImage: `url(${category.categoryName}Background)`
                       // }}
                       className={`catalogue__elements-element-image ${category.categoryName}`}
                     >
-                      <h1 className={"catalogue__elements-element-text"}>
-                        {category.categoryName.toUpperCase()}
-                      </h1>
+                      <h1 className={'catalogue__elements-element-text'}>{category.categoryName.toUpperCase()}</h1>
                     </div>
                   </Link>
                 </li>

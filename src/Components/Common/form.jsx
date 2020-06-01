@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Joi, { read } from 'joi-browser';
+import Joi from 'joi-browser';
 import Input from './input';
 import Select from './select';
 import Textarea from './textarea';
@@ -105,7 +105,7 @@ class Form extends Component {
   }
 
   renderFileField(name, label, type = 'file') {
-    const { data, errors } = this.state;
+    const { errors } = this.state;
 
     return <FileField type={type} name={name} label={label} onChange={this.handleImageChange} error={errors[name]} />;
   }

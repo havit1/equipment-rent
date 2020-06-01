@@ -1,4 +1,4 @@
-export const removeItemAction = item => {
+export const removeItemAction = (item) => {
   return (dispath, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
 
@@ -7,6 +7,6 @@ export const removeItemAction = item => {
       .doc(`${item.id}`)
       .delete()
       .then(() => {})
-      .catch(err => {});
+      .catch((err) => {});
   };
 };

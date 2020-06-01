@@ -1,4 +1,4 @@
-export const signIn = credentials => {
+export const signIn = (credentials) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
@@ -6,10 +6,10 @@ export const signIn = credentials => {
       .auth()
       .signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
-        dispatch({ type: "LOGIN_SUCCESS" });
+        dispatch({ type: 'LOGIN_SUCCESS' });
       })
-      .catch(err => {
-        dispatch({ type: "LOGIN_FAILURE", payload: err });
+      .catch((err) => {
+        dispatch({ type: 'LOGIN_FAILURE', payload: err });
       });
   };
 };
@@ -22,12 +22,12 @@ export const signOut = () => {
       .auth()
       .signOut()
       .then(() => {
-        dispatch({ type: "SIGNOUT_SUCCESS" });
+        dispatch({ type: 'SIGNOUT_SUCCESS' });
       });
   };
 };
 
-export const signUp = newUser => {
+export const signUp = (newUser) => {
   return (dispath, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
@@ -35,22 +35,22 @@ export const signUp = newUser => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
-      .then(resp => {
+      .then((resp) => {
         return firestore
-          .collection("users")
+          .collection('users')
           .doc(resp.user.uid)
           .set({
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             initials: newUser.firstName[0] + newUser.lastName[0],
-            savedProducts: {}
+            savedProducts: {},
           });
       })
       .then(() => {
-        dispath({ type: "SIGNUP_SUCCESS" });
+        dispath({ type: 'SIGNUP_SUCCESS' });
       })
-      .catch(err => {
-        dispath({ type: "SIGNUP_ERROR", payload: err });
+      .catch((err) => {
+        dispath({ type: 'SIGNUP_ERROR', payload: err });
       });
   };
 };
