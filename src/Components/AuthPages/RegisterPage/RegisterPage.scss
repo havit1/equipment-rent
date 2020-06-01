@@ -1,19 +1,14 @@
-@import '../../styles/mixin.scss';
+@import '../../../styles/mixin.scss';
 
 .register-page {
   position: relative;
   z-index: 0;
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
 
   &__image {
     height: 100%;
-    background-image: url(../../assets/images/PhotobyAlexanderDummeronUnsplash.jpg);
-    background-color: white;
-    background-position: center;
     animation: bluring 500ms forwards;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   &__form-wrapper {

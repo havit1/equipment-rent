@@ -8,6 +8,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { addItemAction } from '../../Actions/addItemAction';
 
 import Form from '../Common/form';
+import Loader from '../Common/loader/loader';
 
 import './ItemConfigPage.scss';
 
@@ -27,24 +28,25 @@ class ItemConfigPage extends Form {
   };
 
   schema = {
-    name: Joi.string().label('Name'),
-    category: Joi.string().label('Category'),
-    price: Joi.number().label('Price'),
-    // name: Joi.string().required().label('Name'),
-    // category: Joi.string().required().label('Category'),
-    // price: Joi.number().required().label('Price'),
+    name: Joi.string().required().label('Name'),
+    category: Joi.string()
+      .required()
+      .label('Category')
+      .error(() => {
+        return { message: 'Please choose a cetegory' };
+      }),
+    price: Joi.number().required().label('Price'),
     description: Joi.label('Description'),
     id: Joi.label('Id'),
     youtubeLink: Joi.string()
+      .required(false)
       .regex(/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/)
       .label('Youtube Link')
       .error(() => {
         return { message: 'Please use vaild Youtube link' };
       }),
-    ownerPhoneNumber: Joi.number().label('Phone number'),
-    // ownerPhoneNumber: Joi.number().required().label('Phone number'),
-    ownerEmailAddress: Joi.string().email().label('Email address'),
-    // ownerEmailAddress: Joi.string().email().required().label('Email address'),
+    ownerPhoneNumber: Joi.number().required().label('Phone number'),
+    ownerEmailAddress: Joi.string().email().required().label('Email address'),
     image: Joi.any(),
   };
 
@@ -66,23 +68,25 @@ class ItemConfigPage extends Form {
 
     const { categories } = this.props;
 
-    if (!categories) return <h1>LOADING</h1>;
-
     return (
-      <section className='item-config-page'>
-        <div className='item-config-page__form-wrapper'>
-          <form className='item-config-page__form' onSubmit={this.handleSubmit}>
-            {this.renderInput('name', 'Name')}
-            {this.renderInput('price', 'Price')}
-            {this.renderSelect('category', 'Category', categories)}
-            {this.renderInput('ownerPhoneNumber', 'Phone number')}
-            {this.renderInput('ownerEmailAddress', 'Email address')}
-            {this.renderInput('youtubeLink', 'Youtube Link')}
-            {this.renderTextarea('description', 'Description')}
-            {this.renderFileField('image', 'Image')}
-            {this.renderButton('Save', 'btn btn-primary')}
-          </form>
-        </div>
+      <section className='item-config-page home-page-background'>
+        {!categories ? (
+          <Loader />
+        ) : (
+          <div className='item-config-page__form-wrapper'>
+            <form className='item-config-page__form' onSubmit={this.handleSubmit}>
+              {this.renderInput('name', 'Name')}
+              {this.renderInput('price', 'Price')}
+              {this.renderSelect('category', 'Category', categories)}
+              {this.renderInput('ownerPhoneNumber', 'Phone number')}
+              {this.renderInput('ownerEmailAddress', 'Email address')}
+              {this.renderInput('youtubeLink', 'Youtube Link')}
+              {this.renderTextarea('description', 'Description')}
+              {this.renderFileField('image', 'Image')}
+              {this.renderButton('Save', 'item-config-page__form-button')}
+            </form>
+          </div>
+        )}
       </section>
     );
   }

@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import { useFirestoreConnect } from 'react-redux-firebase';
+
+import Loader from '../Common/loader/loader';
 
 import './Catalogue.scss';
 
@@ -13,7 +16,7 @@ const Catalogue = () => {
   return (
     <section className='catalogue-wrapper'>
       {categories.status.requesting.categories ? (
-        <h2 className='spinner'>Loading</h2>
+        <Loader />
       ) : categories.errors.byQuery.length > 0 ? (
         <h2 className='error'>{categories.error}</h2>
       ) : (
@@ -27,12 +30,7 @@ const Catalogue = () => {
                   <span></span>
                   <span></span>
                   <Link to={`/${category.categoryName.toLowerCase()}/${category.id}`}>
-                    <div
-                      // style={{
-                      //   backgroundImage: `url(${category.categoryName}Background)`
-                      // }}
-                      className={`catalogue__elements-element-image ${category.categoryName}`}
-                    >
+                    <div className={`catalogue__elements-element-image ${category.categoryName}`}>
                       <h1 className={'catalogue__elements-element-text'}>{category.categoryName.toUpperCase()}</h1>
                     </div>
                   </Link>

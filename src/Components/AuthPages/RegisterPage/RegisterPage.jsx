@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { signUp } from '../../Actions/authActions';
+import { signUp } from '../../../Actions/authActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './RegisterPage.scss';
@@ -54,7 +54,7 @@ class RegisterPage extends Component {
             {authError && <p className='alert'>{authError.message}</p>}
           </form>
         </div>
-        <div className='register-page__image'></div>
+        <div className='register-page__image home-page-background'></div>
       </section>
     );
   }

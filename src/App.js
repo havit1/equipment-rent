@@ -9,10 +9,10 @@ import ProductPage from './Components/ProductPage/ProductPage';
 import UsersSavedProductPage from './Components/UsersSavedProductPage/UsersSavedProductPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import ItemConfigPage from './Components/ItemConfigPage/ItemConfigPage';
-import LoginPage from './Components/AuthPages/LoginPage';
-import LogoutPage from './Components/AuthPages/LogoutPage';
+import LoginPage from './Components/AuthPages/LoginPage/LoginPage';
+import LogoutPage from './Components/AuthPages/LogoutPage/LogoutPage';
+import RegisterPage from './Components/AuthPages/RegisterPage/RegisterPage';
 import ProtectedRoute from './Components/Common/protectedRoute';
-import RegisterPage from './Components/AuthPages/RegisterPage';
 import UserPfofilePage from './Components/UserProfilePage/UserProfilePage';
 
 import 'react-toastify/dist/ReactToastify.css';

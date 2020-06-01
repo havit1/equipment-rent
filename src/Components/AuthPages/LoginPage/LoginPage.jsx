@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 // import Joi from "joi-browser";
 import { connect } from 'react-redux';
-import { signIn } from '../../Actions/authActions';
+
+import { signIn } from '../../../Actions/authActions';
+
 import './LoginPage.scss';
 
 class LoginPage extends Component {
@@ -43,10 +45,10 @@ class LoginPage extends Component {
               <input onChange={this.handleChange} type='password' id='password' />
             </div>
             <button>Login</button>
-            <h3>{authError ? <h1 className='alert'>{authError.message}</h1> : null}</h3>
+            <span>{authError ? <h1 className='alert'>{authError.message}</h1> : null}</span>
           </form>
         </div>
-        <div className='login-page__image'></div>>
+        <div className='login-page__image home-page-background'></div>>
       </section>
     );
   }

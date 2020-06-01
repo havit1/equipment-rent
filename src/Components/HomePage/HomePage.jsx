@@ -6,7 +6,7 @@ class HomePage extends Component {
   render() {
     document.title = 'Home';
     return (
-      <div className='home-page'>
+      <div className='home-page home-page-background'>
         <Catalogue></Catalogue>
       </div>
     );

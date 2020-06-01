@@ -1,28 +1,9 @@
 @import '../../styles/mixin.scss';
 @import '../../styles/variables.scss';
 
-.cameras {
-  background-image: url(../../assets/images/jakob-owens-LCiZmVUaEf0-unsplash.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.microphones {
-  background-image: url(../../assets/images/Photo-by-Jonathan-Velasquez-on-Unsplash.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.lights {
-  background-image: url(../../assets/images/Photo-by-william-f.-santos-on-Unsplash.jpg);
-  background-size: cover;
-}
-
 .product-list {
-  padding-top: 20vh;
-  height: 100%;
+  padding-top: 200px;
+  min-height: 100vh;
   width: 100%;
   margin: 0;
   overflow-y: auto;

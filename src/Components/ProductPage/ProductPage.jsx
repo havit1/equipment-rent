@@ -53,7 +53,7 @@ class ProductPage extends Component {
                     </Link>
                   </div>
                 ) : null}
-                <h3 className='product-page__info-price'>{product[0].price}$</h3>
+                <h3 className='product-page__info-price'>Price (for a one day): {product[0].price}$</h3>
                 <p className='product-page__info-description'>{product[0].description}</p>
                 <div className='product-page__owner'>
                   <h3 className='product-page__owner-name'>

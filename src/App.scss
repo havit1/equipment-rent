@@ -1,5 +1,4 @@
 @import './styles/defaultStyles.scss';
-@import './styles/variables.scss';
 @import './styles/mixin.scss';
 
 header {
@@ -10,8 +9,7 @@ header {
 }
 
 main {
-  height: 100%;
-  width: 100%;
+  min-height: 100vh;
 }
 
 footer {
@@ -25,7 +23,7 @@ footer {
 }
 
 .page-container {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @include media-sm {

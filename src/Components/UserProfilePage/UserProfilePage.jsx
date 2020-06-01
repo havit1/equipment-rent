@@ -16,7 +16,7 @@ class UserProfilePage extends cardGenerator {
     const { userItems, handleRemoveItem } = this.props;
 
     return (
-      <section className='user-profile'>
+      <section className='user-profile home-page-background'>
         <ul className='user-profile__items'>
           {userItems.items &&
             userItems.items.map((item) => (
