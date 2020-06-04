@@ -8,6 +8,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { fetchSaveItem } from '../../Actions/saveDeleteProductAction';
 import { removeItemAction } from '../../Actions/removeItemAction';
 
+import defaultImage from '../../assets/images/default-image.jpg';
+
 import './ProductPage.scss';
 
 class ProductPage extends Component {
@@ -17,19 +19,17 @@ class ProductPage extends Component {
 
     return (
       <section className={`product-page`}>
-        {product && (
+        {product && product.length > 0 ? (
           <>
             <div className={`product-page__background-image ${product[0].category.categoryName}`} />
 
             <div className='product-page__wrapper'>
-              {/* <div
-                className='product-page__image'
-                style={{
-                  backgroundImage: `src=${product[0].displayImageUrl}`,
-                }}
-              ></div> */}
               <div className='product-page__image-wrapper'>
-                <img className='product-page__image' alt='Product' src={`${product[0].displayImageUrl}`}></img>
+                {product[0].displayImageUrl ? (
+                  <img className='product-page__image' alt='Product' src={`${product[0].displayImageUrl}`} />
+                ) : (
+                  <img className='product-page__image' alt='Product' src={`${defaultImage}`} />
+                )}
               </div>
 
               <div className='product-page__info'>
@@ -78,6 +78,10 @@ class ProductPage extends Component {
               </div>
             </div>
           </>
+        ) : (
+          <div className='product-page__background-image home-page-background'>
+            <h1 className='product-page__wrapper-error'>This product is not available anymore</h1>
+          </div>
         )}
       </section>
     );

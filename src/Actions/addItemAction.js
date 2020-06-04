@@ -8,15 +8,33 @@ export const addItemAction = (newItem) => {
 
     newItem.youtubeLink = getId(newItem.youtubeLink);
 
-    storage
-      .child(`images/${ownerId}_${new Date().getTime()}`)
-      .put(newItem.image)
-      .then(async (snapshot) => {
-        const downloadUrl = await snapshot.ref.getDownloadURL();
-        console.log(downloadUrl);
-        newItem.image = snapshot.metadata.fullPath;
-        newItem.displayImageUrl = downloadUrl;
-        firestore
+    console.log(newItem.image);
+
+    newItem.image.name
+      ? storage
+          .child(`images/${ownerId}_${new Date().getTime()}`)
+          .put(newItem.image)
+          .then(async (snapshot) => {
+            const downloadUrl = await snapshot.ref.getDownloadURL();
+            newItem.image = snapshot.metadata.fullPath;
+            newItem.displayImageUrl = downloadUrl;
+            firestore
+              .collection(`categories/${newItem.category.id}/items`)
+              .add({
+                ...newItem,
+                ownerFirstName: profile.firstName,
+                ownerLastName: profile.lastName,
+                ownerId,
+                createdAt: new Date(),
+              })
+              .then(() => {
+                dispatchEvent({ type: 'ADD_NEW_PRODUCT', payload: newItem });
+              })
+              .catch((err) => {
+                dispath({ type: 'ADD_NEW_PRODUCT_ERROR', payload: err });
+              });
+          })
+      : firestore
           .collection(`categories/${newItem.category.id}/items`)
           .add({
             ...newItem,
@@ -31,7 +49,6 @@ export const addItemAction = (newItem) => {
           .catch((err) => {
             dispath({ type: 'ADD_NEW_PRODUCT_ERROR', payload: err });
           });
-      });
   };
 };
 
